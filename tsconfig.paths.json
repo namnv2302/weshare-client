@@ -1,16 +1,17 @@
 {
-    "compilerOptions": {
-        "baseUrl": "src",
-        "paths": {
-            "@components/*": ["components/*"],
-            "@pages/*": ["pages/*"],
-            "@utils/*": ["utils/*"],
-            "@hooks/*": ["hooks/*"],
-            "@interfaces/*": ["interfaces/*"],
-            "@apis/*": ["apis/*"],
-            "@constants/*": ["constants/*"],
-            "@layouts/*": ["layouts/*"],
-            "@slices/*": ["redux/slices/*"]
-        }
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@apis/*": ["apis/*"],
+      "@constants/*": ["constants/*"],
+      "@layouts/*": ["layouts/*"],
+      "@slices/*": ["redux/slices/*"],
+      "@assets/*": ["assets/*"]
     }
+  }
 }

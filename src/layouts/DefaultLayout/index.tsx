@@ -13,9 +13,9 @@ const DefaultLayout = ({ children }: { children: ReactNode }) => {
         <Header />
       </Layout.Header>
       <Layout hasSider>
-        <Layout.Sider className={cx('sider')}>Sider</Layout.Sider>
+        <Layout.Sider className={cx('sider-left')}>Sider</Layout.Sider>
         <Layout.Content className={cx('content')}>{children}</Layout.Content>
-        <Layout.Sider className={cx('sider')}>Sider</Layout.Sider>
+        <Layout.Sider className={cx('sider-right')}>Sider</Layout.Sider>
       </Layout>
     </Layout>
   );

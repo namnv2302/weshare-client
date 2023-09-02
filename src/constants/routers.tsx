@@ -4,6 +4,7 @@ import ROUTE_PATH from '@constants/routes';
 
 // pages
 import HomePage from '@pages/Home';
+import SignInPage from '@pages/SignIn';
 
 type publicRoutesType = {
   path: string;
@@ -20,6 +21,11 @@ export const NavigateToSignIn = () => {
 };
 
 export const publicRoutes: publicRoutesType[] = [
+  {
+    path: ROUTE_PATH.SIGN_IN,
+    component: SignInPage,
+    layout: null,
+  },
   {
     path: ROUTE_PATH.HOME,
     component: HomePage,

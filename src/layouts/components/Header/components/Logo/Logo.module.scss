@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: calc(var(--sider-left-width) - 50px);
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .logo {
+    object-fit: cover;
+  }
+
+  .title {
+    margin: 8px 0 0 10px;
+  }
+}

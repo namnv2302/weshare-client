@@ -2,10 +2,24 @@
   width: 100%;
 
   .header {
+    display: flex;
+    align-items: center;
+    height: var(--header-height);
+    background-color: var(--bg-header);
+  }
+
+  .sider-left,
+  .sider-right {
     background-color: var(--bg-primary);
   }
 
-  .sider {
-    background-color: var(--bg-primary);
+  .sider-left {
+    min-width: var(--sider-left-width) !important;
+    max-width: var(--sider-left-width) !important;
+  }
+
+  .sider-right {
+    min-width: var(--sider-right-width) !important;
+    max-width: var(--sider-right-width) !important;
   }
 }
