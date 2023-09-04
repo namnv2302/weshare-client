@@ -1,4 +1,8 @@
 {
   "Profile": "Trang cá nhân",
-  "Logout": "Đăng xuất"
+  "Logout": "Đăng xuất",
+  "Posts": {
+    "Image": "Ảnh/Video",
+    "Attachment": "Đính kèm"
+  }
 }

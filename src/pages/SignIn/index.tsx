@@ -1,19 +1,54 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import classNames from 'classnames/bind';
-import { Form, Input, Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Form, Input, Button, message } from 'antd';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 import LogoImage from '@assets/images/logo.png';
 import GoogleImage from '@assets/images/google.png';
 import BgImage from '@assets/images/bg-login.jpg';
 import ROUTE_PATH from '@constants/routes';
+import { login, whoAmI } from '@apis/auth';
+import { saveAccessToken } from '@utils/localstorage';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { login as logAction } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
 const SignInPage = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const authorization = useAppSelector((state) => state.authorization);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleLogin = useCallback(() => {}, []);
+  const handleLogin = useCallback(
+    async ({ username, password }: { username: string; password: string }) => {
+      setLoading(true);
+      try {
+        const res = await login(username, password);
+        if (res.status === 201) {
+          saveAccessToken(res.data.data['access_token']);
+          const resAuth = await whoAmI();
+          if (resAuth.status === 200) {
+            dispatch(logAction(resAuth.data.data));
+            navigate(ROUTE_PATH.HOME);
+            message.success('Login success!');
+          }
+        } else {
+          message.error('Email/Password incorrect!');
+        }
+        setLoading(false);
+      } catch (error) {
+        message.error('Email/Password incorrect!');
+        setLoading(false);
+      }
+    },
+    [navigate, dispatch],
+  );
+
+  if (authorization) {
+    <Navigate to={ROUTE_PATH.HOME} />;
+  }
 
   return (
     <>
@@ -33,7 +68,7 @@ const SignInPage = () => {
           <div className={cx('form')}>
             <Form name="login" form={form} onFinish={handleLogin} autoComplete="off">
               <Form.Item
-                name="email"
+                name="username"
                 rules={[
                   { required: true, message: 'Please input your email!' },
                   { type: 'email', message: 'Invalid email format!' },
@@ -57,7 +92,7 @@ const SignInPage = () => {
                 <Input.Password className={cx('input')} placeholder="Password" />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" className={cx('login')}>
+                <Button loading={loading} type="primary" htmlType="submit" className={cx('login')}>
                   Login
                 </Button>
                 <Button type="primary" ghost className={cx('create')}>

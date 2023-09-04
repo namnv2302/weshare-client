@@ -1,3 +1,15 @@
 {
-  "Search": "Search"
+  "Search": {
+    "Label": "Search",
+    "Placeholder": "What's on your mind?"
+  },
+  "Menu": {
+    "Feed": "Feed",
+    "Friends": "Friends",
+    "Photos": "Photos",
+    "Stories": "Stories"
+  },
+  "Button": {
+    "Label": "Share Post"
+  }
 }

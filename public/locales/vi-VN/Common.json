@@ -1,3 +1,15 @@
 {
-  "Search": "Tìm kiếm"
+  "Search": {
+    "Label": "Tìm kiếm",
+    "Placeholder": "Bạn đang nghĩ gì vậy?"
+  },
+  "Menu": {
+    "Feed": "Tin chính",
+    "Friends": "Bạn bè",
+    "Photos": "Ảnh",
+    "Stories": "Câu chuyện"
+  },
+  "Button": {
+    "Label": "Chia sẻ"
+  }
 }

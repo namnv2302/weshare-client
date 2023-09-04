@@ -5,13 +5,15 @@ import classNames from 'classnames/bind';
 import type { MenuProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import styles from './RightPanel.module.scss';
-import DefaultAvatar from '@assets/images/avatar.jpg';
+import DefaultAvatar from '@assets/images/avatar_default.jpg';
 import { SUPPORTED_LOCALES } from '@constants/locales';
+import { useAppSelector } from 'redux/hooks';
 
 const cx = classNames.bind(styles);
 
 const RightPanel = () => {
   const { t, i18n } = useTranslation(['Home']);
+  const authorization = useAppSelector((state) => state.authorization);
 
   const languagesOption = useMemo(() => {
     return SUPPORTED_LOCALES.map(({ value, label }) => ({ key: value, label }));
@@ -64,7 +66,7 @@ const RightPanel = () => {
         <div className={cx('avatar-info')}>
           <img src={DefaultAvatar} alt="Avatar" className={cx('avatar')} />
           <Typography.Title level={5} style={{ marginBottom: 0 }}>
-            Jakob Botosh
+            {authorization ? authorization.email : 'Jakob Botosh'}
           </Typography.Title>
           <DownOutlined className={cx('icon-down')} />
         </div>

@@ -10,7 +10,11 @@ const Search = () => {
   const { t } = useTranslation(['Common']);
   return (
     <>
-      <Input prefix={<SearchOutlined className={cx('icon')} />} placeholder={t('Search')} className={cx('input')} />
+      <Input
+        prefix={<SearchOutlined className={cx('icon')} />}
+        placeholder={t('Search.Label')}
+        className={cx('input')}
+      />
     </>
   );
 };

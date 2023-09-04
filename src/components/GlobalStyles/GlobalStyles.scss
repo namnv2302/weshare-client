@@ -9,13 +9,20 @@
   --bg-primary: #fafafb;
   --bg-second: #f8f8f8;
   --bg-header: #fff;
+  --bg-input: #dedee1;
+  --bg-button: #e5f1ff;
+
+  --text-white: #fff;
   --text-primary: #333;
+  --text-second: #696e74;
+  --border-story: #dedee1;
+  --text-placeholder: #dedee1;
 
   --primary-color: #1b79e5;
 
   // Width, height
   --header-height: 92px;
-  --sider-left-width: 340px;
+  --sider-left-width: 320px;
   --sider-right-width: 380px;
 }
 
@@ -35,7 +42,6 @@ body {
   line-height: 1.6;
   text-rendering: optimizeSpeed;
   overflow-y: overlay;
-  background-color: var(--bg-primary) !important;
 }
 
 // Scrollbar CSS
@@ -52,4 +58,18 @@ html *::-webkit-scrollbar-thumb {
 html *::-webkit-scrollbar-track {
   border-radius: 0;
   background-color: rgba(0, 0, 0, 0);
+}
+
+.text-default {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-second);
+}
+
+.mt-22 {
+  margin-top: 22px;
+}
+
+.mr-10 {
+  margin-right: 10px;
 }

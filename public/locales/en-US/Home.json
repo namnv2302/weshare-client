@@ -1,4 +1,8 @@
 {
   "Profile": "Profile",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "Posts": {
+    "Image": "Image/Video",
+    "Attachment": "Attachment"
+  }
 }
