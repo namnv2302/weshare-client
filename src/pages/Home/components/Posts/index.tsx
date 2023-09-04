@@ -1,21 +1,26 @@
+import { useState } from 'react';
 import { Divider, Input } from 'antd';
 import classNames from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { FileImageOutlined, PaperClipOutlined, SmileOutlined } from '@ant-design/icons';
 import styles from './Posts.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpg';
+import CreatePostModal from '@pages/Home/components/CreatePostModal';
 
 const cx = classNames.bind(styles);
 
 const Posts = () => {
   const { t } = useTranslation(['Home', 'Common']);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   return (
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <img src={AvatarDefault} alt="Avatar" className={cx('avatar')} />
         <Input className={cx('input')} placeholder={t('Search.Placeholder')} suffix={<SmileOutlined />} />
-        <button className={cx('button')}>{t('Button.Label')}</button>
+        <button className={cx('button')} onClick={() => setIsOpenModal(true)}>
+          {t('Button.Label')}
+        </button>
       </div>
       <Divider style={{ margin: '16px 0' }} />
       <div className={cx('options')}>
@@ -28,6 +33,7 @@ const Posts = () => {
           <span className="text-default">{t('Posts.Attachment')}</span>
         </div>
       </div>
+      <CreatePostModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
     </div>
   );
 };
