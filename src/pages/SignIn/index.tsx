@@ -10,7 +10,7 @@ import ROUTE_PATH from '@constants/routes';
 import { login, whoAmI } from '@apis/auth';
 import { saveAccessToken } from '@utils/localstorage';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
-import { login as logAction } from '@slices/authorizationSlice';
+import { login as loginAction } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
@@ -26,11 +26,11 @@ const SignInPage = () => {
       setLoading(true);
       try {
         const res = await login(username, password);
-        if (res.status === 201) {
+        if (res.status === 201 && res.data) {
           saveAccessToken(res.data.data['access_token']);
           const resAuth = await whoAmI();
           if (resAuth.status === 200) {
-            dispatch(logAction(resAuth.data.data));
+            dispatch(loginAction(resAuth.data.data));
             navigate(ROUTE_PATH.HOME);
             message.success('Login success!');
           }

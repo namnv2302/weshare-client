@@ -68,6 +68,10 @@ html *::-webkit-scrollbar-track {
   padding: 0 !important;
 }
 
+.ws-upload-list-item.ws-upload-list-item-error {
+  display: none !important;
+}
+
 .text-default {
   font-size: 1.4rem;
   font-weight: 600;

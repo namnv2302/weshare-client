@@ -3,6 +3,12 @@
   "Logout": "Logout",
   "Posts": {
     "Image": "Image/Video",
-    "Attachment": "Attachment"
+    "Attachment": "Attachment",
+    "Label": "Add to your post"
+  },
+  "User": {
+    "Follower": "Follower",
+    "Following": "Following",
+    "Post": "Post"
   }
 }

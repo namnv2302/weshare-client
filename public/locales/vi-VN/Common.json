@@ -11,5 +11,14 @@
   },
   "Button": {
     "Label": "Chia sẻ"
+  },
+  "Post": {
+    "Require": "Hãy chia sẽ trạng thái của bạn!",
+    "Success": "Tạo bài viết thành công!",
+    "NoData": "Hãy chia sẻ cảm xúc của bạn!"
+  },
+  "Logout": {
+    "Sure": "Bạn có chắc chắn muốn đăng xuất?",
+    "Success": "Đăng xuất thành công!"
   }
 }

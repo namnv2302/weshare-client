@@ -46,12 +46,43 @@
       font-size: 1.4rem;
       font-weight: 500;
       background-color: var(--bg-second);
-      max-height: 160px;
+      max-height: 220px;
+      min-height: 100px;
 
       &::placeholder {
         font-size: 1.5rem;
         font-weight: 500;
         color: var(--text-primary);
+      }
+    }
+  }
+
+  .preview-post {
+    margin-top: 16px;
+
+    .image {
+      position: relative;
+      width: 150px;
+      border-radius: 10px;
+
+      img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 8px;
+        color: var(--text-white);
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
@@ -67,6 +98,7 @@
     .item-text {
       font-weight: 600;
       color: var(--text-second);
+      cursor: pointer;
     }
   }
 

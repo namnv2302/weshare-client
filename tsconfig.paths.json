@@ -11,7 +11,8 @@
       "@constants/*": ["constants/*"],
       "@layouts/*": ["layouts/*"],
       "@slices/*": ["redux/slices/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@helpers/*": ["helpers/*"]
     }
   }
 }

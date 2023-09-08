@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface AuthorizationData {
+export interface AuthorizationData {
   id: string;
   name: string;
   email: string;

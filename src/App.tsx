@@ -6,20 +6,20 @@ import { publicRoutes } from '@constants/routers';
 import DefaultLayout from '@layouts/DefaultLayout';
 import { getAccessToken } from '@utils/localstorage';
 import { whoAmI } from '@apis/auth';
-import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { useAppDispatch } from 'redux/hooks';
 import { logout, login } from '@slices/authorizationSlice';
 import ROUTE_PATH from '@constants/routes';
+import ProtectRoute from 'templates/ProtectRoute';
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const authorization = useAppSelector((state) => state.authorization);
 
   useEffect(() => {
     (async () => {
-      // if (getAccessToken() == null || !authorization) {
-      //   navigate(ROUTE_PATH.SIGN_IN);
-      // }
+      if (getAccessToken() == null) {
+        navigate(ROUTE_PATH.SIGN_IN);
+      }
       const resAuth = await whoAmI();
       if (resAuth.status === 200 && resAuth.data) {
         dispatch(login(resAuth.data.data));
@@ -27,7 +27,7 @@ function App() {
         dispatch(logout());
       }
     })();
-  }, [dispatch, authorization, navigate]);
+  }, [dispatch, navigate]);
 
   return (
     <ConfigProvider
@@ -54,9 +54,11 @@ function App() {
                   key={uuidV4()}
                   path={route.path}
                   element={
-                    <Layout>
-                      <Page />
-                    </Layout>
+                    <ProtectRoute>
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    </ProtectRoute>
                   }
                 />
               );
