@@ -51,11 +51,19 @@ const RightPanel = () => {
   const items: MenuProps['items'] = [
     {
       key: '1',
-      label: <Typography.Text className="text-default">{t('Profile')}</Typography.Text>,
+      label: (
+        <Typography.Text className="text-default" style={{ display: 'block', padding: '3px 0' }}>
+          {t('Profile')}
+        </Typography.Text>
+      ),
     },
     {
       key: '2',
-      label: <Typography.Text className="text-default">{currentLang?.label}</Typography.Text>,
+      label: (
+        <Typography.Text className="text-default" style={{ display: 'block', padding: '3px 0' }}>
+          {currentLang?.label}
+        </Typography.Text>
+      ),
       children: languagesOption,
       onClick: handleLangChange,
     },
@@ -65,7 +73,9 @@ const RightPanel = () => {
         <>
           <Divider style={{ margin: '0 0 5px' }} />
           <Popconfirm title={t('Logout.Sure')} onConfirm={handleLogout}>
-            <Typography.Text className="text-default">{t('Logout')}</Typography.Text>
+            <Typography.Text className="text-default" style={{ display: 'block', padding: '3px 0' }}>
+              {t('Logout')}
+            </Typography.Text>
           </Popconfirm>
         </>
       ),

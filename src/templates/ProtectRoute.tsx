@@ -1,11 +1,11 @@
-import { NavigateToSignIn } from '@constants/routers';
 import { useAppSelector } from 'redux/hooks';
+import { NavigateToSignIn } from '@constants/routers';
 
 const ProtectRoute = ({ children }: { children: JSX.Element }) => {
   const authorization = useAppSelector((state) => state.authorization);
 
   if (!authorization) {
-    return <NavigateToSignIn />;
+    <NavigateToSignIn />;
   }
 
   return children;

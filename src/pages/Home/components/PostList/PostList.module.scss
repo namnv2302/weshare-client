@@ -77,5 +77,38 @@
         border-radius: 10px;
       }
     }
+
+    .actions {
+      display: flex;
+      align-items: center;
+
+      .action-item {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+
+        .icon {
+          font-size: 2rem;
+          color: var(--text-second);
+          margin-right: 5px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: var(--bg-second);
+          }
+
+          &.isLiked {
+            fill: #ea64d9;
+          }
+        }
+
+        .view {
+          &:hover {
+            text-decoration: underline;
+            cursor: default;
+          }
+        }
+      }
+    }
   }
 }

@@ -20,5 +20,11 @@
   "Logout": {
     "Sure": "Are you sure want to logout?",
     "Success": "Logout success!"
+  },
+  "Sort": {
+    "Label": "Sort by",
+    "Option": {
+      "Following": "Following"
+    }
   }
 }

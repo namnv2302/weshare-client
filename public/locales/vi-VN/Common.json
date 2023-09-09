@@ -20,5 +20,11 @@
   "Logout": {
     "Sure": "Bạn có chắc chắn muốn đăng xuất?",
     "Success": "Đăng xuất thành công!"
+  },
+  "Sort": {
+    "Label": "Sắp xếp",
+    "Option": {
+      "Following": "Theo dõi"
+    }
   }
 }

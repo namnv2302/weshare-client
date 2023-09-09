@@ -3,10 +3,12 @@ import { getPostList } from '@apis/post';
 import { AuthorizationData } from '@slices/authorizationSlice';
 
 export interface IPost {
+  id?: string;
   status?: string;
   postUrl?: string;
   createdAt?: Date;
   user?: AuthorizationData;
+  liked?: AuthorizationData[];
 }
 
 const usePosts = () => {

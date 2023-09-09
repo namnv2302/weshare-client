@@ -72,6 +72,10 @@ html *::-webkit-scrollbar-track {
   display: none !important;
 }
 
+.ws-dropdown-menu-submenu-title {
+  display: flex;
+}
+
 .text-default {
   font-size: 1.4rem;
   font-weight: 600;

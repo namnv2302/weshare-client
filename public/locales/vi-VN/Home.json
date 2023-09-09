@@ -10,5 +10,10 @@
     "Follower": "Theo dõi",
     "Following": "Đang theo dõi",
     "Post": "Bài viết"
+  },
+  "Action": {
+    "Like": "thích",
+    "Comment": "bình luận",
+    "Share": "chia sẻ"
   }
 }

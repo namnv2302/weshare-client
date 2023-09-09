@@ -42,17 +42,17 @@ function App() {
       <div className="App">
         <Suspense fallback={<div>Loading</div>}>
           <Routes>
-            {publicRoutes.map((route) => {
-              const Page = route.component;
+            {publicRoutes.map(({ component, layout, path }) => {
+              const Page = component;
               let Layout = DefaultLayout as any;
-              if (route.layout === null) {
+              if (layout === null) {
                 Layout = Fragment;
               }
 
               return (
                 <Route
                   key={uuidV4()}
-                  path={route.path}
+                  path={path}
                   element={
                     <ProtectRoute>
                       <Layout>

@@ -21,7 +21,7 @@
     background-color: var(--bg-second);
 
     .content {
-      margin: 0 180px;
+      margin: 0 calc(180px + var(--sider-right-width)) 0 calc(180px + var(--sider-left-width));
       background-color: var(--bg-second);
     }
   }
@@ -32,11 +32,17 @@
   }
 
   .sider-left {
+    position: fixed;
+    left: 22px;
+    z-index: 99;
     min-width: var(--sider-left-width) !important;
     max-width: var(--sider-left-width) !important;
   }
 
   .sider-right {
+    position: fixed;
+    right: 22px;
+    z-index: 99;
     min-width: var(--sider-right-width) !important;
     max-width: var(--sider-right-width) !important;
   }

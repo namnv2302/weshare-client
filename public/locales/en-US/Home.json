@@ -10,5 +10,10 @@
     "Follower": "Follower",
     "Following": "Following",
     "Post": "Post"
+  },
+  "Action": {
+    "Like": "like",
+    "Comment": "comment",
+    "Share": "share"
   }
 }
