@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { IPost } from '@hooks/usePosts';
+import { IPost } from '@hooks/posts/usePosts';
 import { getPostList } from '@apis/post';
 
 export const fetchPostList = createAsyncThunk('post/fetchList', async () => {

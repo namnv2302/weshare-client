@@ -6,7 +6,7 @@ import { Divider } from 'antd';
 import { useTranslation } from 'react-i18next';
 import styles from './PostList.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpg';
-import { IPost } from '@hooks/usePosts';
+import { IPost } from '@hooks/posts/usePosts';
 import { DATE_FORMAT } from '@constants/time';
 import { ShareIcon, HeartIcon } from '@components/Icons';
 import { like, unlike } from '@apis/post';
@@ -98,7 +98,7 @@ const PostItem = ({ data }: { data: IPost }) => {
           <span className="text-default">10 {t('Action.Share')}</span>
         </div>
       </div>
-      <ViewUsers open={open} onCancel={() => setOpen(false)} />
+      {data.id && <ViewUsers id={data.id} open={open} onCancel={() => setOpen(false)} />}
     </div>
   );
 };

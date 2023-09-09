@@ -25,6 +25,7 @@
   --sider-left-width: 320px;
   --sider-right-width: 380px;
   --create-post-width: 780px;
+  --view-users-width: 620px;
 }
 
 * {
@@ -62,7 +63,8 @@ html *::-webkit-scrollbar-track {
 }
 
 // Overide antd css
-.CreatePostModal_wrapper__MvRsy .ws-modal-content {
+.CreatePostModal_wrapper__MvRsy .ws-modal-content,
+.ViewUsers_wrapper__P\+Q\+W .ws-modal-content {
   box-shadow: none !important;
   background-color: var(--bg-primary) !important;
   padding: 0 !important;

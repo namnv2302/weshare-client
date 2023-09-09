@@ -3,6 +3,7 @@ import apiInstance from '@apis/index';
 enum PostPath {
   CREATE = '/posts',
   DEFAULT = '/posts',
+  DETAIL = '/posts/:id',
   LIKE = '/posts/:id/like',
   UNLIKE = '/posts/:id/unlike',
 }
@@ -13,6 +14,10 @@ export const createPost = async ({ status, postUrl }: { status?: string; postUrl
 
 export const getPostList = async () => {
   return apiInstance.get(PostPath.DEFAULT);
+};
+
+export const getPostDetail = async (id: string) => {
+  return apiInstance.get(PostPath.DETAIL.replace(':id', id));
 };
 
 export const like = async (id: string) => {

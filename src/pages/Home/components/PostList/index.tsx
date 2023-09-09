@@ -5,7 +5,7 @@ import LazyLoad from 'react-lazyload';
 import { useTranslation } from 'react-i18next';
 import styles from './PostList.module.scss';
 import PostItem from '@pages/Home/components/PostList/PostItem';
-import { IPost } from '@hooks/usePosts';
+import { IPost } from '@hooks/posts/usePosts';
 import NoData from '@assets/images/no-data.jpg';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { fetchPostList } from '@slices/postSlice';
