@@ -3,13 +3,17 @@ import { Navigate } from 'react-router-dom';
 import ROUTE_PATH from '@constants/routes';
 
 // pages
-import HomePage from '@pages/Home';
+import HeaderLayout from '@layouts/HeaderLayout';
 import SignInPage from '@pages/SignIn';
+import HomePage from '@pages/Home';
+import ProfilePage from '@pages/Profile';
+import UserPage from '@pages/User';
+import NotFoundPage from '@pages/NotFound';
 
 type publicRoutesType = {
   path: string;
   component: React.FC;
-  layout?: null | React.FC;
+  layout?: null | any;
 };
 
 export const NavigateToNotFound = () => {
@@ -29,5 +33,25 @@ export const publicRoutes: publicRoutesType[] = [
   {
     path: ROUTE_PATH.HOME,
     component: HomePage,
+  },
+  {
+    path: ROUTE_PATH.PROFILE,
+    component: ProfilePage,
+    layout: HeaderLayout,
+  },
+  {
+    path: ROUTE_PATH.USER,
+    component: UserPage,
+    layout: HeaderLayout,
+  },
+  {
+    path: ROUTE_PATH.NOT_FOUND,
+    component: NotFoundPage,
+    layout: null,
+  },
+  {
+    path: ROUTE_PATH.OTHER,
+    component: NotFoundPage,
+    layout: null,
   },
 ];

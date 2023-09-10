@@ -1,4 +1,4 @@
-import { Divider, Result, Spin, Typography } from 'antd';
+import { Divider, Spin } from 'antd';
 import { v4 as uuIdV4 } from 'uuid';
 import classNames from 'classnames/bind';
 import LazyLoad from 'react-lazyload';
@@ -6,31 +6,21 @@ import { useTranslation } from 'react-i18next';
 import styles from './PostList.module.scss';
 import PostItem from '@pages/Home/components/PostList/PostItem';
 import { IPost } from '@hooks/posts/usePosts';
-import NoData from '@assets/images/no-data.jpg';
-import { useAppDispatch, useAppSelector } from 'redux/hooks';
-import { fetchPostList } from '@slices/postSlice';
-import { useEffect } from 'react';
+import NoData from '@components/NoData';
 
 const cx = classNames.bind(styles);
 
-const PostList = () => {
+const PostList = ({ posts, loading, divider = true }: { posts: IPost[]; loading: boolean; divider?: boolean }) => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const { posts, loading } = useAppSelector((state) => state.post);
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(fetchPostList());
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className={cx('wrapper')}>
-      <Divider orientation="right">
-        <span className={cx('sort-text')}>{t('Sort.Label')}: </span>
-        <span className={cx('sort-option')}>{t('Sort.Option.Following')}</span>
-      </Divider>
+      {divider && (
+        <Divider orientation="right">
+          <span className={cx('sort-text')}>{t('Sort.Label')}: </span>
+          <span className={cx('sort-option')}>{t('Sort.Option.Following')}</span>
+        </Divider>
+      )}
       <>
         {loading ? (
           <Spin style={{ display: 'block', textAlign: 'center', marginTop: '22px' }} />
@@ -41,10 +31,7 @@ const PostList = () => {
             </LazyLoad>
           ))
         ) : (
-          <Result
-            title={<Typography.Text className="text-default">{t('Post.NoData')}</Typography.Text>}
-            icon={<img src={NoData} alt="No data" style={{ width: '100px', borderRadius: '10px' }} />}
-          />
+          <NoData title={t('Post.NoData')} />
         )}
       </>
     </div>

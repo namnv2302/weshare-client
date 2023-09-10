@@ -4,6 +4,7 @@ enum PostPath {
   CREATE = '/posts',
   DEFAULT = '/posts',
   DETAIL = '/posts/:id',
+  OF_ME = '/posts/me',
   LIKE = '/posts/:id/like',
   UNLIKE = '/posts/:id/unlike',
 }
@@ -14,6 +15,10 @@ export const createPost = async ({ status, postUrl }: { status?: string; postUrl
 
 export const getPostList = async () => {
   return apiInstance.get(PostPath.DEFAULT);
+};
+
+export const getPostListOfMe = async () => {
+  return apiInstance.get(PostPath.OF_ME);
 };
 
 export const getPostDetail = async (id: string) => {

@@ -45,7 +45,9 @@ function App() {
             {publicRoutes.map(({ component, layout, path }) => {
               const Page = component;
               let Layout = DefaultLayout as any;
-              if (layout === null) {
+              if (layout != null) {
+                Layout = layout;
+              } else if (layout === null) {
                 Layout = Fragment;
               }
 

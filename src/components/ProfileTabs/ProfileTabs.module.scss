@@ -1,0 +1,18 @@
+.wrapper {
+  margin-top: 20px;
+
+  .about {
+    margin-top: 20px;
+  }
+
+  .item {
+    margin-bottom: 20px;
+
+    .label {
+      display: inline-block;
+      font-size: 1.6rem;
+      font-weight: 500;
+      min-width: 100px;
+    }
+  }
+}

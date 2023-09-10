@@ -24,7 +24,12 @@
   "Sort": {
     "Label": "Sắp xếp",
     "Option": {
-      "Following": "Theo dõi"
+      "Following": "Theo dõi",
+      "All": "Tất cả"
     }
-  }
+  },
+  "NoData": {
+    "Like": "Chưa có ai thích bài viết này"
+  },
+  "Empty": "Chưa có"
 }

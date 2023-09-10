@@ -12,6 +12,7 @@ import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { logout } from '@apis/auth';
 import { logout as logoutAction } from '@slices/authorizationSlice';
 import ROUTE_PATH from '@constants/routes';
+import { clearLocalstorageToken } from '@utils/localstorage';
 
 const cx = classNames.bind(styles);
 
@@ -38,6 +39,7 @@ const RightPanel = () => {
   const handleLogout = useCallback(async () => {
     await logout();
     dispatch(logoutAction());
+    clearLocalstorageToken();
     navigate(ROUTE_PATH.SIGN_IN);
     message.info(t('Logout.Success'));
   }, [dispatch, navigate, t]);
@@ -56,6 +58,7 @@ const RightPanel = () => {
           {t('Profile')}
         </Typography.Text>
       ),
+      onClick: () => navigate(ROUTE_PATH.PROFILE.replace(':slug', `${authorization?.slug}`)),
     },
     {
       key: '2',

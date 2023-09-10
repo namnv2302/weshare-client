@@ -24,7 +24,12 @@
   "Sort": {
     "Label": "Sort by",
     "Option": {
-      "Following": "Following"
+      "Following": "Following",
+      "All": "All"
     }
-  }
+  },
+  "NoData": {
+    "Like": "No one has liked this post yet"
+  },
+  "Empty": "Empty"
 }

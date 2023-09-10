@@ -25,7 +25,7 @@
 
   &:hover {
     background-color: var(--bg-second);
-    cursor: pointer;
+    cursor: default;
   }
 
   .left {
@@ -36,6 +36,7 @@
       width: 42px;
       height: 42px;
       border-radius: 100%;
+      cursor: pointer;
 
       img {
         display: block;
@@ -48,6 +49,7 @@
 
     .text-info {
       margin-left: 10px;
+      cursor: pointer;
 
       .name {
         font-size: 1.6rem;

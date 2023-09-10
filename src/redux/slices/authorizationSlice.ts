@@ -1,14 +1,17 @@
+import { IPost } from '@hooks/posts/usePosts';
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface AuthorizationData {
   id: string;
   name: string;
   email: string;
+  slug: string;
   age: number;
   address: string;
   gender: string;
   avatar: string;
   role: string;
+  posts: IPost[];
 }
 
 type AuthorizationState = AuthorizationData | null;

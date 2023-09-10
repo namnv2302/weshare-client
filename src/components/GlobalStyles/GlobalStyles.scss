@@ -78,6 +78,10 @@ html *::-webkit-scrollbar-track {
   display: flex;
 }
 
+.ws-result-icon {
+  margin-bottom: 16px !important;
+}
+
 .text-default {
   font-size: 1.4rem;
   font-weight: 600;
@@ -90,4 +94,8 @@ html *::-webkit-scrollbar-track {
 
 .mr-10 {
   margin-right: 10px;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
 }
