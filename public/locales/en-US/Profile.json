@@ -2,5 +2,18 @@
   "Tabs": {
     "About": "About",
     "Posts": "Posts"
+  },
+  "Label": {
+    "Edit": "Edit Profile",
+    "Email": "Email",
+    "Age": "Age",
+    "Address": "Address",
+    "Gender": "Gender"
+  },
+  "EditModal": {
+    "Cancel": "Cancel",
+    "Edit": "Edit",
+    "Success": "Edit profile success!",
+    "Error": "Edit failed!"
   }
 }

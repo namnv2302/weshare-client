@@ -1,4 +1,6 @@
 .wrapper {
+  margin-top: 26px;
+
   .content {
     display: flex;
     margin-top: 20px;
@@ -34,7 +36,7 @@
       font-weight: 600;
       padding: 8px 16px;
       height: 40px;
-      width: 150px;
+      min-width: 150px;
       margin-right: 16px;
       border-radius: 10px;
       border: none;

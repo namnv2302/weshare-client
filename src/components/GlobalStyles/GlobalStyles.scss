@@ -63,11 +63,16 @@ html *::-webkit-scrollbar-track {
 }
 
 // Overide antd css
+.EditModal_wrapper__DyvNZ .ws-modal-content,
 .CreatePostModal_wrapper__MvRsy .ws-modal-content,
 .ViewUsers_wrapper__P\+Q\+W .ws-modal-content {
   box-shadow: none !important;
   background-color: var(--bg-primary) !important;
   padding: 0 !important;
+}
+
+.EditModal_form-input__gY0Ij .ws-input-number-input {
+  padding: 0;
 }
 
 .ws-upload-list-item.ws-upload-list-item-error {
@@ -80,6 +85,12 @@ html *::-webkit-scrollbar-track {
 
 .ws-result-icon {
   margin-bottom: 16px !important;
+}
+
+.ws-select-selector {
+  display: flex;
+  align-items: center;
+  height: 36px !important;
 }
 
 .text-default {

@@ -2,5 +2,18 @@
   "Tabs": {
     "About": "Giới thiệu",
     "Posts": "Bài viết"
+  },
+  "Label": {
+    "Edit": "Chỉnh sửa thông tin",
+    "Email": "Email",
+    "Age": "Tuổi",
+    "Address": "Địa chỉ",
+    "Gender": "Giới tính"
+  },
+  "EditModal": {
+    "Cancel": "Hủy",
+    "Edit": "Xác nhận",
+    "Success": "Chỉnh sửa thành công!",
+    "Error": "Có lỗi, Thử lại sau!"
   }
 }

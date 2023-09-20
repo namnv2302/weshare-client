@@ -1,15 +1,20 @@
 import classNames from 'classnames/bind';
-import { Col, Row } from 'antd';
+import { Col, Image, Row } from 'antd';
 import styles from './Profile.module.scss';
 import LeftPanel from '@pages/Profile/components/LeftPanel';
 import RightPanel from '@pages/Profile/components/RightPanel';
+import CoverProfile from '@assets/images/cover-profile.png';
+import AvatarDefault from '@assets/images/avatar_default.jpg';
 
 const cx = classNames.bind(styles);
 
 const ProfilePage = () => {
   return (
     <div className={cx('wrapper')}>
-      <Row>
+      <div className={cx('cover-profile')} style={{ backgroundImage: `url(${CoverProfile})` }}>
+        <Image className={cx('avatar')} src={AvatarDefault} preview={false} />
+      </div>
+      <Row gutter={{ lg: 32 }}>
         <Col lg={{ span: 8 }}>
           <LeftPanel />
         </Col>

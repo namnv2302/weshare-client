@@ -24,8 +24,9 @@ export const authorizationSlice = createSlice({
   reducers: {
     login: (state, action) => (state = action.payload),
     logout: () => null,
+    update: (state, action) => (state = action.payload),
   },
 });
 
-export const { login, logout } = authorizationSlice.actions;
+export const { login, logout, update } = authorizationSlice.actions;
 export default authorizationSlice.reducer;

@@ -1,5 +1,24 @@
 .wrapper {
-  padding: 16px;
+  padding: 0 16px 16px;
   border-radius: 10px;
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  .cover-profile {
+    position: relative;
+    padding-top: 308px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .avatar {
+      position: absolute;
+      bottom: 0;
+      left: 40px;
+      transform: translateY(50%);
+      width: 162px;
+      border-radius: 10px;
+    }
+  }
 }

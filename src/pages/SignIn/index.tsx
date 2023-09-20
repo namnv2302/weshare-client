@@ -7,7 +7,7 @@ import LogoImage from '@assets/images/logo.png';
 import GoogleImage from '@assets/images/google.png';
 import BgImage from '@assets/images/bg-login.jpg';
 import ROUTE_PATH from '@constants/routes';
-import { login, whoAmI } from '@apis/auth';
+import { login, loginWithGoogle, whoAmI } from '@apis/auth';
 import { saveAccessToken } from '@utils/localstorage';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { login as loginAction } from '@slices/authorizationSlice';
@@ -46,6 +46,11 @@ const SignInPage = () => {
     [navigate, dispatch],
   );
 
+  const handleLoginWithGoogle = useCallback(async () => {
+    const result = window.open('http://localhost:8080/api/auth/google');
+    console.log(result);
+  }, []);
+
   if (authorization) {
     <Navigate to={ROUTE_PATH.HOME} />;
   }
@@ -60,7 +65,7 @@ const SignInPage = () => {
           </h3>
           <h1 className={cx('heading')}>Đăng nhập vào WeShare</h1>
           <div className={cx('provider')}>
-            <span className={cx('google')}>
+            <span className={cx('google')} onClick={handleLoginWithGoogle}>
               <img src={GoogleImage} alt="Google" />
             </span>
           </div>

@@ -10,7 +10,7 @@ import AvatarDefault from '@assets/images/avatar_default.jpg';
 import { createPost } from '@apis/post';
 import { upload } from '@helpers/upload';
 import { useAppDispatch } from 'redux/hooks';
-import { createPost as createPostAction } from '@slices/postSlice';
+import { fetchPostList } from '@slices/postSlice';
 
 const cx = classNames.bind(styles);
 
@@ -53,7 +53,8 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
         await createPost({ status, postUrl: '' });
         setTimeout(() => {
           setIsOpenModal(false);
-          dispatch(createPostAction({ status, postUrl: '', user: authorization }));
+          dispatch(fetchPostList());
+          // dispatch(createPostAction({ status, postUrl: '', user: authorization }));
           clearField();
           message.success(t('Post.Success'));
           setCreating(false);
@@ -61,7 +62,8 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
       } else {
         const postUrl = await upload(previewPostUrl);
         await createPost({ status, postUrl });
-        dispatch(createPostAction({ status, postUrl, user: authorization }));
+        dispatch(fetchPostList());
+        // dispatch(createPostAction({ status, postUrl, user: authorization }));
         setIsOpenModal(false);
         clearField();
         message.success(t('Post.Success'));
@@ -71,7 +73,7 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
       clearField();
       setCreating(false);
     }
-  }, [previewPostUrl, t, status, setIsOpenModal, clearField, dispatch, authorization]);
+  }, [previewPostUrl, t, status, setIsOpenModal, clearField, dispatch]);
 
   const handleRemovePreviewPostUrl = useCallback(() => {
     if (previewPostUrl) {

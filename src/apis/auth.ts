@@ -4,10 +4,15 @@ enum AuthPath {
   LOGIN = '/auth/login',
   ME = '/auth/me',
   LOGOUT = '/auth/logout',
+  GOOGLE = '/auth/google',
 }
 
 export const login = async (username: string, password: string) => {
   return apiInstance.post(AuthPath.LOGIN, { username, password });
+};
+
+export const loginWithGoogle = async () => {
+  return apiInstance.get(AuthPath.GOOGLE);
 };
 
 export const whoAmI = async () => {

@@ -7,17 +7,17 @@ import styles from './ProfileTabs.module.scss';
 const cx = classNames.bind(styles);
 
 const AboutTab = () => {
-  const { t } = useTranslation(['Common']);
+  const { t } = useTranslation(['Profile', 'Common']);
   const authorization = useAppSelector((state) => state.authorization);
 
   return (
     <div className={cx('about')}>
       <div className={cx('item')}>
-        <Typography.Text className={cx('label')}>Email:</Typography.Text>
+        <Typography.Text className={cx('label')}>{t('Label.Email')}:</Typography.Text>
         <Typography.Text className="text-default">{authorization?.email}</Typography.Text>
       </div>
       <div className={cx('item')}>
-        <Typography.Text className={cx('label')}>Age:</Typography.Text>
+        <Typography.Text className={cx('label')}>{t('Label.Age')}:</Typography.Text>
         {authorization?.age ? (
           <Typography.Text className="text-default">{authorization?.age}</Typography.Text>
         ) : (
@@ -25,7 +25,7 @@ const AboutTab = () => {
         )}
       </div>
       <div className={cx('item')}>
-        <Typography.Text className={cx('label')}>Address:</Typography.Text>
+        <Typography.Text className={cx('label')}>{t('Label.Address')}:</Typography.Text>
         {authorization?.address ? (
           <Typography.Text className="text-default">{authorization?.address}</Typography.Text>
         ) : (
@@ -33,7 +33,7 @@ const AboutTab = () => {
         )}
       </div>
       <div className={cx('item')}>
-        <Typography.Text className={cx('label')}>Gender:</Typography.Text>
+        <Typography.Text className={cx('label')}>{t('Label.Gender')}:</Typography.Text>
         {authorization?.gender ? (
           <Typography.Text className="text-default">{authorization?.gender}</Typography.Text>
         ) : (
