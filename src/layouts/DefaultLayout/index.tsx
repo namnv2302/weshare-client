@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './DefaultLayout.module.scss';
 import Header from '@layouts/components/Header';
 import SiderLeft from '@layouts/components/SiderLeft';
+import SiderRight from '@layouts/components/SiderRight';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,9 @@ const DefaultLayout = ({ children }: { children: ReactNode }) => {
           <SiderLeft />
         </Layout.Sider>
         <Layout.Content className={cx('content')}>{children}</Layout.Content>
-        <Layout.Sider className={cx('sider-right')}>Sider</Layout.Sider>
+        <Layout.Sider className={cx('sider-right')}>
+          <SiderRight />
+        </Layout.Sider>
       </Layout>
     </Layout>
   );

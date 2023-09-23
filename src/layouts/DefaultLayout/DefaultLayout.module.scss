@@ -21,7 +21,7 @@
     background-color: var(--bg-second);
 
     .content {
-      margin: 0 calc(180px + var(--sider-right-width)) 0 calc(180px + var(--sider-left-width));
+      margin: 0 calc(100px + var(--sider-right-width)) 0 calc(100px + var(--sider-left-width));
       background-color: var(--bg-second);
     }
   }

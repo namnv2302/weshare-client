@@ -15,5 +15,15 @@
     "Like": "like",
     "Comment": "comment",
     "Share": "share"
-  }
+  },
+  "RightSider": {
+    "Label": "Messages",
+    "Tab": {
+      "Item1": "Primary",
+      "Item2": "Requests"
+    },
+    "Search": "Search"
+  },
+  "Failed": "Request failed",
+  "YourStory": "Your Story"
 }

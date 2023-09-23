@@ -6,7 +6,7 @@ import { CloseOutlined, DownOutlined, FileImageOutlined, PaperClipOutlined } fro
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'redux/hooks';
 import styles from './CreatePostModal.module.scss';
-import AvatarDefault from '@assets/images/avatar_default.jpg';
+import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { createPost } from '@apis/post';
 import { upload } from '@helpers/upload';
 import { useAppDispatch } from 'redux/hooks';

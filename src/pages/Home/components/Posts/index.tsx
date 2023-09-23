@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { FileImageOutlined, PaperClipOutlined, SmileOutlined } from '@ant-design/icons';
 import styles from './Posts.module.scss';
-import AvatarDefault from '@assets/images/avatar_default.jpg';
+import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import CreatePostModal from '@pages/Home/components/CreatePostModal';
 
 const cx = classNames.bind(styles);

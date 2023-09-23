@@ -15,5 +15,15 @@
     "Like": "thích",
     "Comment": "bình luận",
     "Share": "chia sẻ"
-  }
+  },
+  "RightSider": {
+    "Label": "Tin nhắn",
+    "Tab": {
+      "Item1": "Bạn bè",
+      "Item2": "Yêu cầu"
+    },
+    "Search": "Tìm kiếm"
+  },
+  "Failed": "Yêu cầu chưa được gửi",
+  "YourStory": "Tin của bạn"
 }

@@ -12,6 +12,9 @@ export interface AuthorizationData {
   avatar: string;
   role: string;
   posts: IPost[];
+  following: AuthorizationData[];
+  followed: AuthorizationData[];
+  friends: AuthorizationData[];
 }
 
 type AuthorizationState = AuthorizationData | null;

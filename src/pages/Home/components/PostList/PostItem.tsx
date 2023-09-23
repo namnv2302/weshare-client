@@ -5,7 +5,7 @@ import moment from 'moment';
 import { Divider } from 'antd';
 import { useTranslation } from 'react-i18next';
 import styles from './PostList.module.scss';
-import AvatarDefault from '@assets/images/avatar_default.jpg';
+import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { IPost } from '@hooks/posts/usePosts';
 import { DATE_FORMAT } from '@constants/time';
 import { ShareIcon, HeartIcon } from '@components/Icons';

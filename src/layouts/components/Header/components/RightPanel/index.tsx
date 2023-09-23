@@ -6,7 +6,7 @@ import type { MenuProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import styles from './RightPanel.module.scss';
-import DefaultAvatar from '@assets/images/avatar_default.jpg';
+import DefaultAvatar from '@assets/images/avatar_default.jpeg';
 import { SUPPORTED_LOCALES } from '@constants/locales';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { logout } from '@apis/auth';
@@ -96,7 +96,7 @@ const RightPanel = () => {
       <Dropdown menu={{ items }} overlayStyle={{ minWidth: '160px' }} placement="topRight">
         <div className={cx('avatar-info')}>
           <img src={DefaultAvatar} alt="Avatar" className={cx('avatar')} />
-          <Typography.Title level={5} style={{ marginBottom: 0 }}>
+          <Typography.Title className={cx('name')} style={{ marginBottom: 0 }}>
             {authorization ? authorization.name : 'Jakob Botosh'}
           </Typography.Title>
           <DownOutlined className={cx('icon-down')} />

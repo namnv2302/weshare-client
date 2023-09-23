@@ -21,10 +21,10 @@
   --primary-color: #1b79e5;
 
   // Width, height
-  --header-height: 92px;
+  --header-height: 80px;
   --sider-left-width: 320px;
   --sider-right-width: 380px;
-  --create-post-width: 780px;
+  --create-post-width: 660px;
   --view-users-width: 620px;
 }
 
@@ -63,16 +63,22 @@ html *::-webkit-scrollbar-track {
 }
 
 // Overide antd css
-.EditModal_wrapper__DyvNZ .ws-modal-content,
-.CreatePostModal_wrapper__MvRsy .ws-modal-content,
-.ViewUsers_wrapper__P\+Q\+W .ws-modal-content {
+.ws-modal-wrap.img-crop-modal .ws-modal-content {
+  padding: 16px !important;
+
+  .ws-modal-header {
+    background-color: unset !important;
+  }
+}
+
+.ws-modal-content {
   box-shadow: none !important;
   background-color: var(--bg-primary) !important;
   padding: 0 !important;
 }
 
-.EditModal_form-input__gY0Ij .ws-input-number-input {
-  padding: 0;
+.ws-input-number-input {
+  padding: 0 !important;
 }
 
 .ws-upload-list-item.ws-upload-list-item-error {

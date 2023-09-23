@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'redux/hooks';
 import { useNavigate } from 'react-router-dom';
 import styles from './UserInfo.module.scss';
-import AvatarDefault from '@assets/images/avatar_default.jpg';
+import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import ROUTE_PATH from '@constants/routes';
 
 const cx = classNames.bind(styles);
@@ -35,15 +35,15 @@ const UserInfo = () => {
         </div>
         <div className={cx('content')}>
           <div className={cx('item')}>
-            <span className={cx('item-number')}>2.3K</span>
+            <span className={cx('item-number')}>{authorization?.followed.length}</span>
             <span className={cx('item-text')}>{t('User.Follower')}</span>
           </div>
           <div className={cx('item')}>
-            <span className={cx('item-number')}>23</span>
+            <span className={cx('item-number')}>{authorization?.following.length}</span>
             <span className={cx('item-text')}>{t('User.Following')}</span>
           </div>
           <div className={cx('item')}>
-            <span className={cx('item-number')}>0</span>
+            <span className={cx('item-number')}>{authorization?.posts.length}</span>
             <span className={cx('item-text')}>{t('User.Post')}</span>
           </div>
         </div>

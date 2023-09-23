@@ -23,11 +23,11 @@ const RightPanel = () => {
       <Typography.Text className="text-default">@{authorization?.slug || 'Jakob Botosh'}</Typography.Text>
       <div className={cx('content')}>
         <div className={cx('item')}>
-          <span className={cx('item-number')}>2.3K</span>
+          <span className={cx('item-number')}>{authorization?.followed.length}</span>
           <span className={cx('item-text')}>{t('User.Follower')}</span>
         </div>
         <div className={cx('item')}>
-          <span className={cx('item-number')}>23</span>
+          <span className={cx('item-number')}>{authorization?.following.length}</span>
           <span className={cx('item-text')}>{t('User.Following')}</span>
         </div>
         <div className={cx('item')}>

@@ -1,4 +1,6 @@
 .wrapper {
+  margin-top: 26px;
+
   .content {
     display: flex;
     margin-top: 20px;
@@ -28,25 +30,29 @@
     margin-top: 20px;
 
     .button-add,
-    .button-mess {
+    .button-mess,
+    .button-confirm {
       font-size: 1.4rem;
       font-weight: 600;
       padding: 8px 16px;
-      height: 40px;
-      width: 150px;
+      min-height: 38px;
+      min-width: 140px;
       margin-right: 16px;
       border-radius: 10px;
       border: none;
       outline: none;
-      color: var(--primary-color);
-      background-color: var(--bg-button);
+      color: var(--text-white);
+      background-color: var(--primary-color);
       cursor: pointer;
     }
 
     .button-mess {
-      color: var(--text-white);
       background-color: #e4e6eb;
       color: var(--text-primary);
+    }
+    .button-confirm {
+      background-color: var(--bg-button);
+      color: var(--primary-color);
     }
   }
 }
