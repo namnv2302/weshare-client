@@ -7,7 +7,7 @@ import LogoImage from '@assets/images/logo.png';
 import GoogleImage from '@assets/images/google.png';
 import BgImage from '@assets/images/bg-login.jpg';
 import ROUTE_PATH from '@constants/routes';
-import { login, loginWithGoogle, whoAmI } from '@apis/auth';
+import { login, whoAmI } from '@apis/auth';
 import { saveAccessToken } from '@utils/localstorage';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { login as loginAction } from '@slices/authorizationSlice';
@@ -47,8 +47,7 @@ const SignInPage = () => {
   );
 
   const handleLoginWithGoogle = useCallback(async () => {
-    const result = window.open('http://localhost:8080/api/auth/google');
-    console.log(result);
+    window.open('http://localhost:8080/api/auth/google', '_self');
   }, []);
 
   if (authorization) {

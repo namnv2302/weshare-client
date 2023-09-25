@@ -18,7 +18,7 @@ const UserInfo = () => {
       <div className={cx('body')}>
         <div className={cx('head')}>
           <img
-            src={AvatarDefault}
+            src={authorization?.avatar || AvatarDefault}
             alt="Avatar"
             className={cx('avatar')}
             onClick={() => navigate(ROUTE_PATH.PROFILE.replace(':slug', `${authorization?.slug}`))}

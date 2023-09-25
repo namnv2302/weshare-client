@@ -89,7 +89,7 @@ const ViewUsersItem = ({ data, size }: { data: AuthorizationData; size?: string 
             )
           }
         >
-          <img src={AvatarDefault} alt="Avatar" />
+          <img src={data.avatar || AvatarDefault} alt="Avatar" />
         </div>
         <div className={cx('text-info')}>
           <Typography.Text

@@ -11,6 +11,7 @@
   --bg-header: #fff;
   --bg-input: #dedee1;
   --bg-button: #e5f1ff;
+  --bg-message: #e4e6eb;
 
   --text-white: #fff;
   --text-primary: #333;
@@ -99,6 +100,30 @@ html *::-webkit-scrollbar-track {
   height: 36px !important;
 }
 
+// Overide ckeditor5 css
+.ck.ck-sticky-panel__content {
+  display: none !important;
+}
+
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred,
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+  padding: 16px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  background-color: var(--bg-second);
+  max-height: 220px;
+  min-height: 100px;
+  box-shadow: none;
+
+  p {
+    margin: 0;
+  }
+}
+
+//
 .text-default {
   font-size: 1.4rem;
   font-weight: 600;

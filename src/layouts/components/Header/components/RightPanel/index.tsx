@@ -95,7 +95,7 @@ const RightPanel = () => {
       </Space>
       <Dropdown menu={{ items }} overlayStyle={{ minWidth: '160px' }} placement="topRight">
         <div className={cx('avatar-info')}>
-          <img src={DefaultAvatar} alt="Avatar" className={cx('avatar')} />
+          <img src={authorization?.avatar || DefaultAvatar} alt="Avatar" className={cx('avatar')} />
           <Typography.Title className={cx('name')} style={{ marginBottom: 0 }}>
             {authorization ? authorization.name : 'Jakob Botosh'}
           </Typography.Title>

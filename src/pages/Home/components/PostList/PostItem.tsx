@@ -12,6 +12,7 @@ import { ShareIcon, HeartIcon } from '@components/Icons';
 import { like, unlike } from '@apis/post';
 import { useAppSelector } from 'redux/hooks';
 import ViewUsers from '@components/ViewUsers';
+import ReadMoreStatus from '@components/ReadMoreStatus';
 
 const cx = classNames.bind(styles);
 
@@ -61,7 +62,7 @@ const PostItem = ({ data }: { data: IPost }) => {
     <div className={cx('item')}>
       <div className={cx('head')}>
         <div className={cx('left')}>
-          <img src={AvatarDefault} alt="Avatar" />
+          <img src={data.user?.avatar || AvatarDefault} alt="Avatar" />
           <span className={cx('desc')}>
             <span className={cx('name')}>{data.user?.name || 'Jakob Botosh'}</span>
             <span className={cx('time')}>{moment(data.createdAt).format(DATE_FORMAT)}</span>
@@ -70,7 +71,7 @@ const PostItem = ({ data }: { data: IPost }) => {
         <MoreOutlined className={cx('right-icon')} />
       </div>
       <div className={cx('body')}>
-        {data.status ? <span className={cx('status')}>{data.status}</span> : false}
+        {data.status ? <ReadMoreStatus status={data.status} /> : false}
         {data.postUrl ? <img src={data.postUrl} alt="post" /> : false}
       </div>
       <Divider style={{ margin: '18px 0 12px' }} />

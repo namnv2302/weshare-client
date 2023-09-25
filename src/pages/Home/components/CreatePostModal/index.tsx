@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Divider, Input, Modal, Tag, Upload, message } from 'antd';
+import { Button, Divider, Modal, Tag, Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import classNames from 'classnames/bind';
 import { CloseOutlined, DownOutlined, FileImageOutlined, PaperClipOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useAppSelector } from 'redux/hooks';
 import styles from './CreatePostModal.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
@@ -94,11 +96,13 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
         </div>
       </div>
       <div className={cx('content')}>
-        <Input.TextArea
-          value={status}
-          className={cx('status')}
-          placeholder={t('Search.Placeholder')}
-          onChange={(e: any) => setStatus(e.target.value)}
+        <CKEditor
+          editor={ClassicEditor}
+          data={status}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            setStatus(data);
+          }}
         />
       </div>
       {previewPostUrl ? (

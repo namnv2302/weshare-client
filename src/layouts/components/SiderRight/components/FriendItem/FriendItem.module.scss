@@ -1,0 +1,54 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &.small {
+    .left {
+      .avatar {
+        width: 36px;
+        height: 36px;
+      }
+      .text-info {
+        .name {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    background-color: var(--bg-second);
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 100%;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+    }
+
+    .text-info {
+      margin-left: 10px;
+
+      .name {
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

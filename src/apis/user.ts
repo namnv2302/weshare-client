@@ -7,6 +7,7 @@ enum UserPath {
   UNFOLLOW = 'users/:id/unfollow',
   ADDFR = 'users/:id/addfr',
   FOLLOWED = 'users/followed',
+  AVATAR = 'users/:id/avatar',
 }
 
 export const getUserBySlug = (slug: string) => {
@@ -33,4 +34,8 @@ export const addfr = (id: string) => {
 
 export const getFollowedList = () => {
   return apiInstance.get(UserPath.FOLLOWED);
+};
+
+export const updateAvatar = async (id: string, avatar: string) => {
+  return apiInstance.patch(UserPath.AVATAR.replace(':id', id), { avatar });
 };

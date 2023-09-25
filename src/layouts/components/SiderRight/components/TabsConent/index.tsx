@@ -7,33 +7,42 @@ import classNames from 'classnames/bind';
 import styles from './TabsConent.module.scss';
 import useFollowedList from '@hooks/users/useFollowedList';
 import FriendRequestItem from '@layouts/components/SiderRight/components/FriendRequestItem';
+import FriendItem from '@layouts/components/SiderRight/components/FriendItem';
+import { useAppSelector } from 'redux/hooks';
 
 const cx = classNames.bind(styles);
 
 const TabsConent = () => {
   const { t } = useTranslation();
-  const { data } = useFollowedList();
+  const authorization = useAppSelector((state) => state.authorization);
+  const { data: dataFollowed } = useFollowedList();
 
   const items: TabsProps['items'] = useMemo(
     () => [
       {
         key: '1',
         label: <Typography.Text className={cx('label')}>{t('Home:RightSider.Tab.Item1')}</Typography.Text>,
-        children: 'Alo',
+        children: (
+          <>
+            {authorization?.friends?.map((user) => (
+              <FriendItem key={uuIdV4()} data={user} size="small" />
+            ))}
+          </>
+        ),
       },
       {
         key: '2',
         label: <Typography.Text className={cx('label')}>{t('Home:RightSider.Tab.Item2')}</Typography.Text>,
         children: (
           <>
-            {data?.map((user) => (
+            {dataFollowed?.map((user) => (
               <FriendRequestItem key={uuIdV4()} data={user} size="small" />
             ))}
           </>
         ),
       },
     ],
-    [data, t],
+    [dataFollowed, t, authorization?.friends],
   );
 
   return <Tabs className={cx('wrapper')} items={items} />;
