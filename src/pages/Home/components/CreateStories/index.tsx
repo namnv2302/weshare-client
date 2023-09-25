@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './CreateStories.module.scss';
-import Avatar from '@assets/images/avatar_default.jpeg';
+import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'redux/hooks';
 
@@ -13,7 +13,7 @@ const CreateStories = () => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('avatar')}>
-        <img src={authorization?.avatar || Avatar} alt="Avatar" />
+        <img src={authorization?.avatar || AvatarDefault} alt="Avatar" />
       </div>
       <span className={cx('label')}>{t('Home:YourStory')}</span>
     </div>

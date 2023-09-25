@@ -6,17 +6,19 @@ import { FileImageOutlined, PaperClipOutlined, SmileOutlined } from '@ant-design
 import styles from './Posts.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import CreatePostModal from '@pages/Home/components/CreatePostModal';
+import { useAppSelector } from 'redux/hooks';
 
 const cx = classNames.bind(styles);
 
 const Posts = () => {
   const { t } = useTranslation(['Home', 'Common']);
+  const authorization = useAppSelector((state) => state.authorization);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   return (
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
-        <img src={AvatarDefault} alt="Avatar" className={cx('avatar')} />
+        <img src={authorization?.avatar || AvatarDefault} alt="Avatar" className={cx('avatar')} />
         <Input className={cx('input')} placeholder={t('Search.Placeholder')} suffix={<SmileOutlined />} />
         <button className={cx('button')} onClick={() => setIsOpenModal(true)}>
           {t('Button.Label')}

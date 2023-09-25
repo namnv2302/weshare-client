@@ -1,22 +1,18 @@
-import { useCallback, useMemo, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import { Typography, Button, message, notification } from 'antd';
 import { CheckOutlined, MessageOutlined, UserOutlined } from '@ant-design/icons';
-import { useParams } from 'react-router-dom';
 import styles from './RightPanel.module.scss';
 import UserTabs from '@components/UserTabs';
-import useUserBySlug from '@hooks/users/useUserBySlug';
 import { useAppSelector } from 'redux/hooks';
 import { addfr, follow, unfollow } from '@apis/user';
+import { AuthorizationData } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
-const RightPanel = () => {
+const RightPanel = ({ data, loading }: { data: AuthorizationData | undefined; loading: boolean }) => {
   const { t } = useTranslation(['Home', 'Common']);
-  const { slug } = useParams();
-  const userSlug = useMemo(() => slug, [slug]) as string;
-  const { data, loading } = useUserBySlug(userSlug);
   const authorization = useAppSelector((state) => state.authorization);
   const [requesting, setRequesting] = useState<boolean>(false);
   const [isRequested, setIsRequested] = useState<boolean>(false);

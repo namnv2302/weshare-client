@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
-import { Button, Col, Row, Spin, Upload, message } from 'antd';
+import { Button, Col, Image, Row, Spin, Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { FileImageOutlined, UserOutlined } from '@ant-design/icons';
+import { FileImageOutlined, LoadingOutlined, UserOutlined } from '@ant-design/icons';
 import Tippy from '@tippyjs/react/headless';
 import styles from './Profile.module.scss';
 import LeftPanel from '@pages/Profile/components/LeftPanel';
@@ -11,13 +11,17 @@ import CoverProfile from '@assets/images/cover-profile.png';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { upload } from '@helpers/upload';
 import { updateAvatar } from '@apis/user';
-import { useAppSelector } from 'redux/hooks';
+import { useAppSelector, useAppDispatch } from 'redux/hooks';
+import { changeAvatar } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
 const ProfilePage = () => {
+  const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.authorization);
+  const imageRef = useRef<any>(null);
   const [uploading, setUploading] = useState<boolean>(false);
+  const [visibleOption, setVisibleOption] = useState<boolean>(false);
 
   const handleUploadImage = useCallback(
     async (file: any) => {
@@ -26,6 +30,7 @@ const ProfilePage = () => {
         const avatarUrl = await upload(file);
         if (authorization && avatarUrl) {
           await updateAvatar(authorization?.id, avatarUrl);
+          dispatch(changeAvatar({ avatar: avatarUrl }));
         }
         setUploading(false);
         message.success('Change avatar success!');
@@ -34,18 +39,23 @@ const ProfilePage = () => {
         message.error('Change avatar failed!');
       }
     },
-    [authorization],
+    [authorization, dispatch],
   );
+
+  const handleSeeProfilePicture = useCallback(() => {
+    imageRef.current.querySelector('.ws-image').click();
+    setVisibleOption(false);
+  }, []);
 
   const renderResult = useCallback((attrs: any) => {
     return (
       <div className={cx('option')} tabIndex="-1" {...attrs}>
-        <Button icon={<UserOutlined />} className={cx('button')}>
+        <Button icon={<UserOutlined />} className={cx('button')} onClick={handleSeeProfilePicture}>
           See profile picture
         </Button>
         <ImgCrop rotationSlider>
           <Upload accept="image/jpg, image/jpeg, image/png" beforeUpload={handleUploadImage}>
-            <Button icon={<FileImageOutlined />} className={cx('button')}>
+            <Button icon={<FileImageOutlined />} className={cx('button')} onClick={() => setVisibleOption(false)}>
               Choose profile picture
             </Button>
           </Upload>
@@ -58,16 +68,36 @@ const ProfilePage = () => {
   return (
     <>
       {uploading ? (
-        <Spin />
+        <Spin
+          style={{ position: 'relative', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 10 }}
+          size="large"
+          indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}
+        />
       ) : (
         <div className={cx('wrapper')}>
           <div className={cx('cover-profile')} style={{ backgroundImage: `url(${CoverProfile})` }}>
             <div>
-              <Tippy delay={[0, 500]} interactive placement="bottom" hideOnClick={false} render={renderResult}>
-                <img className={cx('avatar')} src={authorization?.avatar || AvatarDefault} alt="" />
+              <Tippy
+                visible={visibleOption}
+                delay={[0, 500]}
+                interactive
+                placement="bottom"
+                // hideOnClick={false}
+                onClickOutside={() => setVisibleOption(false)}
+                render={renderResult}
+              >
+                <img
+                  className={cx('avatar')}
+                  src={authorization?.avatar || AvatarDefault}
+                  alt=""
+                  onClick={() => setVisibleOption(!visibleOption)}
+                />
               </Tippy>
             </div>
           </div>
+          <span ref={imageRef} style={{ display: 'none' }}>
+            <Image width={200} src={authorization?.avatar || AvatarDefault} />
+          </span>
           <Row gutter={{ lg: 32 }}>
             <Col lg={{ span: 9 }}>
               <LeftPanel />

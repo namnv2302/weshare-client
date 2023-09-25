@@ -28,8 +28,13 @@ export const authorizationSlice = createSlice({
     login: (state, action) => (state = action.payload),
     logout: () => null,
     update: (state, action) => (state = action.payload),
+    changeAvatar: (state, action) => {
+      if (state) {
+        state.avatar = action.payload.avatar;
+      }
+    },
   },
 });
 
-export const { login, logout, update } = authorizationSlice.actions;
+export const { login, logout, update, changeAvatar } = authorizationSlice.actions;
 export default authorizationSlice.reducer;

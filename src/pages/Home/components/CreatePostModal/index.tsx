@@ -87,7 +87,7 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
   return (
     <Modal className={cx('wrapper')} open={isOpenModal} onCancel={() => setIsOpenModal(false)} footer={null}>
       <div className={cx('head')}>
-        <img src={AvatarDefault} alt="Avatar" className={cx('avatar')} />
+        <img src={authorization?.avatar || AvatarDefault} alt="Avatar" className={cx('avatar')} />
         <div className={cx('name')}>
           <span className={cx('fullname')}>{authorization ? authorization.name : 'Jakob Botosh'}</span>
           <span className={cx('privacy')}>
