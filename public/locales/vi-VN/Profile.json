@@ -21,5 +21,14 @@
     "Option2": "Chọn ảnh đại diện",
     "Success": "Đổi ảnh đại diện thành công!",
     "Failed": "Đổi ảnh đại diện thất bại. Thử lại!"
+  },
+  "Bio": {
+    "Label": "Tiểu sử",
+    "NoData": "Chưa có tiểu sử!!",
+    "Edit": "Chỉnh sửa tiểu sử",
+    "Confirm": "Chỉnh sửa",
+    "Success": "Chỉnh sửa thành công!",
+    "Failed": "Chỉnh sửa thất bại. Thử lại!",
+    "Placeholder": "Thêm tiểu sử của bạn"
   }
 }

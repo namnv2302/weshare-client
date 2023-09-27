@@ -12,7 +12,7 @@ import { AuthorizationData } from '@slices/authorizationSlice';
 const cx = classNames.bind(styles);
 
 const RightPanel = ({ data, loading }: { data: AuthorizationData | undefined; loading: boolean }) => {
-  const { t } = useTranslation(['Home', 'Common']);
+  const { t } = useTranslation(['Home', 'Common', 'Profile']);
   const authorization = useAppSelector((state) => state.authorization);
   const [requesting, setRequesting] = useState<boolean>(false);
   const [isRequested, setIsRequested] = useState<boolean>(false);
@@ -115,19 +115,19 @@ const RightPanel = ({ data, loading }: { data: AuthorizationData | undefined; lo
       <div className={cx('button')}>
         {friend ? (
           <Button icon={<UserOutlined />} className={cx('button-add')} loading={requesting} onClick={handleAddfr}>
-            Friend
+            {t('Common:Friend')}
           </Button>
         ) : isReceiveReq ? (
           <Button icon={<CheckOutlined />} className={cx('button-confirm')} loading={requesting} onClick={handleAddfr}>
-            Confirm
+            {t('Common:Button.Confirm')}
           </Button>
         ) : (
           <Button icon={<UserOutlined />} className={cx('button-add')} loading={requesting} onClick={handleFollow}>
-            {isRequested ? 'Requested' : 'Addfriend'}
+            {isRequested ? t('Common:Button.Requested') : t('Common:Button.Addfriend')}
           </Button>
         )}
         <Button icon={<MessageOutlined />} className={cx('button-mess')}>
-          Message
+          {t('Common:Button.Message')}
         </Button>
       </div>
       {data && <UserTabs data={data} loading={loading} />}

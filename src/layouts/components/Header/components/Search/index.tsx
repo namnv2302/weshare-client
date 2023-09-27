@@ -50,7 +50,7 @@ const Search = () => {
       onClickOutside={() => setShowResult(false)}
       render={() => <SearchResult data={searchResult} loading={loading} />}
     >
-      <div>
+      <span>
         <Input
           prefix={<SearchOutlined className={cx('icon')} />}
           placeholder={t('Search.Label')}
@@ -58,7 +58,7 @@ const Search = () => {
           onChange={(e) => setInputValue(e.target.value)}
           onFocus={() => setShowResult(true)}
         />
-      </div>
+      </span>
     </Tippy>
   );
 };

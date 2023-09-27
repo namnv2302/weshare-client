@@ -23,7 +23,7 @@ const UserPage = () => {
       </div>
       <Row gutter={{ lg: 32 }}>
         <Col lg={{ span: 9 }}>
-          <LeftPanel />
+          <LeftPanel data={data} loading={loading} />
         </Col>
         <Col lg={{ span: 15 }}>
           <RightPanel data={data} loading={loading} />

@@ -22,7 +22,7 @@
   --primary-color: #1b79e5;
 
   // Width, height
-  --header-height: 80px;
+  --header-height: 65px;
   --sider-left-width: 320px;
   --sider-right-width: 380px;
   --create-post-width: 660px;
@@ -101,6 +101,15 @@ html *::-webkit-scrollbar-track {
   height: 36px !important;
 }
 
+.ws-card-head {
+  padding: 0 !important;
+  min-height: unset !important;
+}
+
+.ws-card-body {
+  padding: 0 !important;
+}
+
 // Overide ckeditor5 css
 .ck.ck-sticky-panel__content {
   display: none !important;
@@ -124,6 +133,8 @@ html *::-webkit-scrollbar-track {
   }
 }
 
+// Overide emoji css
+
 //
 .text-default {
   font-size: 1.4rem;
@@ -135,10 +146,29 @@ html *::-webkit-scrollbar-track {
   margin-top: 22px;
 }
 
+.mt-8 {
+  margin-top: 8px;
+}
+
 .mr-10 {
   margin-right: 10px;
 }
 
 .mb-0 {
   margin-bottom: 0 !important;
+}
+
+.btn-default {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  height: 40px;
+  min-width: 150px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: var(--primary-color);
+  background-color: var(--bg-button);
+  cursor: pointer;
 }

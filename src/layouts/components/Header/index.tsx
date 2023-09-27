@@ -10,10 +10,10 @@ const cx = classNames.bind(styles);
 const Header = () => {
   return (
     <div className={cx('wrapper')}>
-      <Space>
+      <div className={cx('left')}>
         <Logo />
         <Search />
-      </Space>
+      </div>
       <RightPanel />
     </div>
   );

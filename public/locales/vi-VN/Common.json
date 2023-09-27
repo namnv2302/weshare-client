@@ -10,7 +10,11 @@
     "Stories": "Câu chuyện"
   },
   "Button": {
-    "Label": "Chia sẻ"
+    "Label": "Chia sẻ",
+    "Confirm": "Xác nhận",
+    "Message": "Tin nhắn",
+    "Requested": "Đã gửi",
+    "Addfriend": "Kết bạn"
   },
   "Post": {
     "Require": "Hãy chia sẽ trạng thái của bạn!",
@@ -19,7 +23,9 @@
   },
   "Logout": {
     "Sure": "Bạn có chắc chắn muốn đăng xuất?",
-    "Success": "Đăng xuất thành công!"
+    "Success": "Đăng xuất thành công!",
+    "Cancel": "Hủy",
+    "Ok": "Đăng xuất"
   },
   "Sort": {
     "Label": "Sắp xếp",

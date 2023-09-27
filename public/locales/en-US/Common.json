@@ -10,7 +10,11 @@
     "Stories": "Stories"
   },
   "Button": {
-    "Label": "Share Post"
+    "Label": "Share Post",
+    "Confirm": "Confirm",
+    "Message": "Message",
+    "Requested": "Requested",
+    "Addfriend": "Addfriend"
   },
   "Post": {
     "Require": "Your status or image empty!",
@@ -19,7 +23,9 @@
   },
   "Logout": {
     "Sure": "Are you sure want to logout?",
-    "Success": "Logout success!"
+    "Success": "Logout success!",
+    "Cancel": "Cancel",
+    "Ok": "Ok"
   },
   "Sort": {
     "Label": "Sort by",

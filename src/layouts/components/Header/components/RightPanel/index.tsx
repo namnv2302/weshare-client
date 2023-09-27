@@ -75,7 +75,12 @@ const RightPanel = () => {
       label: (
         <>
           <Divider style={{ margin: '0 0 5px' }} />
-          <Popconfirm title={t('Logout.Sure')} onConfirm={handleLogout}>
+          <Popconfirm
+            title={t('Logout.Sure')}
+            okText={t('Logout.Ok')}
+            cancelText={t('Logout.Cancel')}
+            onConfirm={handleLogout}
+          >
             <Typography.Text className="text-default" style={{ display: 'block', padding: '3px 0' }}>
               {t('Logout')}
             </Typography.Text>

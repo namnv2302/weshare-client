@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { CommentOutlined, MoreOutlined } from '@ant-design/icons';
 import moment from 'moment';
@@ -13,11 +14,13 @@ import { like, unlike } from '@apis/post';
 import { useAppSelector } from 'redux/hooks';
 import ViewUsers from '@components/ViewUsers';
 import ReadMoreStatus from '@components/ReadMoreStatus';
+import ROUTE_PATH from '@constants/routes';
 
 const cx = classNames.bind(styles);
 
 const PostItem = ({ data }: { data: IPost }) => {
   const { t } = useTranslation(['Home']);
+  const navigate = useNavigate();
   const authorization = useAppSelector((state) => state.authorization);
   const [open, setOpen] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(() => {
@@ -62,9 +65,30 @@ const PostItem = ({ data }: { data: IPost }) => {
     <div className={cx('item')}>
       <div className={cx('head')}>
         <div className={cx('left')}>
-          <img src={data.user?.avatar || AvatarDefault} alt="Avatar" />
+          <img
+            src={data.user?.avatar || AvatarDefault}
+            alt="Avatar"
+            onClick={() =>
+              navigate(
+                authorization && authorization.id !== data.user?.id
+                  ? ROUTE_PATH.USER.replace(':slug', `${data?.user?.slug}`)
+                  : ROUTE_PATH.PROFILE.replace(':slug', `${data?.user?.slug}`),
+              )
+            }
+          />
           <span className={cx('desc')}>
-            <span className={cx('name')}>{data.user?.name || 'Jakob Botosh'}</span>
+            <span
+              className={cx('name')}
+              onClick={() =>
+                navigate(
+                  authorization && authorization.id !== data.user?.id
+                    ? ROUTE_PATH.USER.replace(':slug', `${data?.user?.slug}`)
+                    : ROUTE_PATH.PROFILE.replace(':slug', `${data?.user?.slug}`),
+                )
+              }
+            >
+              {data.user?.name || 'Jakob Botosh'}
+            </span>
             <span className={cx('time')}>{moment(data.createdAt).format(DATE_FORMAT)}</span>
           </span>
         </div>

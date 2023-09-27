@@ -21,5 +21,14 @@
     "Option2": "Choose profile picture",
     "Success": "Change avatar success!",
     "Failed": "Change avatar failed!"
+  },
+  "Bio": {
+    "Label": "Bio",
+    "NoData": "No Bio Yet!!",
+    "Edit": "Edit bio",
+    "Confirm": "Edit",
+    "Success": "Edit bio success!",
+    "Failed": "Edit bio failed!",
+    "Placeholder": "Add your bio"
   }
 }

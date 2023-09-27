@@ -112,11 +112,11 @@ const ViewUsersItem = ({ data, size }: { data: AuthorizationData; size?: string 
             ''
           ) : isReceiveReq ? (
             <Button className={cx('btn-confirm')} loading={requesting} onClick={handleAddfr}>
-              Confirm
+              {t('Common:Button.Confirm')}
             </Button>
           ) : (
             <Button className={cx('btn-add')} loading={requesting} onClick={handleFollow}>
-              {isRequested ? 'Requested' : 'Addfriend'}
+              {isRequested ? t('Common:Button.Requested') : t('Common:Button.Addfriend')}
             </Button>
           )}
         </>

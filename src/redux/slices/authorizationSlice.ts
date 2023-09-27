@@ -8,6 +8,7 @@ export interface AuthorizationData {
   slug: string;
   age: number;
   address: string;
+  bio: string;
   gender: string;
   avatar: string;
   role: string;
@@ -33,8 +34,13 @@ export const authorizationSlice = createSlice({
         state.avatar = action.payload.avatar;
       }
     },
+    editBio: (state, action) => {
+      if (state) {
+        state.bio = action.payload;
+      }
+    },
   },
 });
 
-export const { login, logout, update, changeAvatar } = authorizationSlice.actions;
+export const { login, logout, update, changeAvatar, editBio } = authorizationSlice.actions;
 export default authorizationSlice.reducer;

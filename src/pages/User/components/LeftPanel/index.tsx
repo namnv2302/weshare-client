@@ -1,16 +1,22 @@
+import { useTranslation } from 'react-i18next';
+import { Card, Typography } from 'antd';
 import classNames from 'classnames/bind';
-import { Input, Typography } from 'antd';
 import styles from './LeftPanel.module.scss';
+import { AuthorizationData } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
-const LeftPanel = () => {
+const LeftPanel = ({ data, loading }: { data: AuthorizationData | undefined; loading: boolean }) => {
+  const { t } = useTranslation(['Profile']);
+
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('bio')}>
-        <Typography.Text className={cx('bio-text')}>Thao</Typography.Text>
-        <Input.TextArea className={cx('bio-input')} placeholder={'Add your bio'} />
-      </div>
+      <Card
+        title={<Typography.Text className={cx('bio-title')}>{t('Bio.Label')}</Typography.Text>}
+        className={cx('bio')}
+      >
+        <Typography.Text className={cx('bio-text')}>{data?.bio || t('Bio.NoData')}</Typography.Text>
+      </Card>
     </div>
   );
 };
