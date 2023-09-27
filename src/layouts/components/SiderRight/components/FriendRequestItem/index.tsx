@@ -12,7 +12,7 @@ const FriendRequestItem = ({ data, size }: { data: AuthorizationData; size?: str
     <div className={cx('item', { small: size === 'small' })}>
       <div className={cx('left')}>
         <div className={cx('avatar')}>
-          <img src={AvatarDefault} alt="Avatar" />
+          <img src={data.avatar || AvatarDefault} alt="Avatar" />
         </div>
         <div className={cx('text-info')}>
           <Typography.Text className={cx('name')}>{data.name || 'Jakob botosh'}</Typography.Text>

@@ -29,8 +29,10 @@
     }
   },
   "NoData": {
-    "Like": "No one has liked this post yet"
+    "Like": "No one has liked this post yet",
+    "Search": "No search result!"
   },
   "Empty": "Empty",
-  "NotYet": "Evolving functionality"
+  "NotYet": "Evolving functionality",
+  "Friend": "Friend"
 }

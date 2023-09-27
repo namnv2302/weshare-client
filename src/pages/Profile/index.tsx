@@ -1,4 +1,5 @@
 import { useCallback, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import { Button, Col, Image, Row, Spin, Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
@@ -17,6 +18,7 @@ import { changeAvatar } from '@slices/authorizationSlice';
 const cx = classNames.bind(styles);
 
 const ProfilePage = () => {
+  const { t } = useTranslation(['Profile']);
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.authorization);
   const imageRef = useRef<any>(null);
@@ -33,13 +35,13 @@ const ProfilePage = () => {
           dispatch(changeAvatar({ avatar: avatarUrl }));
         }
         setUploading(false);
-        message.success('Change avatar success!');
+        message.success(t('Avatar.Success'));
       } catch (error) {
         setUploading(false);
-        message.error('Change avatar failed!');
+        message.error(t('Avatar.Failed'));
       }
     },
-    [authorization, dispatch],
+    [authorization, dispatch, t],
   );
 
   const handleSeeProfilePicture = useCallback(() => {
@@ -51,12 +53,12 @@ const ProfilePage = () => {
     return (
       <div className={cx('option')} tabIndex="-1" {...attrs}>
         <Button icon={<UserOutlined />} className={cx('button')} onClick={handleSeeProfilePicture}>
-          See profile picture
+          {t('Avatar.Option1')}
         </Button>
         <ImgCrop rotationSlider>
           <Upload accept="image/jpg, image/jpeg, image/png" beforeUpload={handleUploadImage}>
             <Button icon={<FileImageOutlined />} className={cx('button')} onClick={() => setVisibleOption(false)}>
-              Choose profile picture
+              {t('Avatar.Option2')}
             </Button>
           </Upload>
         </ImgCrop>

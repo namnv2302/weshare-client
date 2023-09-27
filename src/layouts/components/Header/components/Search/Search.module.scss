@@ -1,6 +1,6 @@
 .input {
   height: 38px;
-  width: 540px;
+  width: var(--search-input-width);
   border-radius: 15px;
   outline: none;
   border: none;

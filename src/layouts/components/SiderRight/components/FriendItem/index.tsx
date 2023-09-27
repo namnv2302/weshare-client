@@ -16,7 +16,7 @@ const FriendItem = ({ data, size }: { data: AuthorizationData; size?: string }) 
       <div className={cx('item', { small: size === 'small' })} onClick={() => setOpen(true)}>
         <div className={cx('left')}>
           <div className={cx('avatar')}>
-            <img src={AvatarDefault} alt="Avatar" />
+            <img src={data.avatar || AvatarDefault} alt="Avatar" />
           </div>
           <div className={cx('text-info')}>
             <Typography.Text className={cx('name')}>{data.name || 'Jakob botosh'}</Typography.Text>

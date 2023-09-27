@@ -15,5 +15,11 @@
     "Edit": "Edit",
     "Success": "Edit profile success!",
     "Error": "Edit failed!"
+  },
+  "Avatar": {
+    "Option1": "See profile picture",
+    "Option2": "Choose profile picture",
+    "Success": "Change avatar success!",
+    "Failed": "Change avatar failed!"
   }
 }

@@ -8,7 +8,14 @@ enum UserPath {
   ADDFR = 'users/:id/addfr',
   FOLLOWED = 'users/followed',
   AVATAR = 'users/:id/avatar',
+  DEFAULT = 'users',
 }
+
+export const getUserByName = (name: string) => {
+  return apiInstance.get(UserPath.DEFAULT, {
+    params: { name },
+  });
+};
 
 export const getUserBySlug = (slug: string) => {
   return apiInstance.get(UserPath.GET_BY_SLUG.replace(':slug', slug));

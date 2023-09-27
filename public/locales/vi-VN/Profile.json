@@ -15,5 +15,11 @@
     "Edit": "Xác nhận",
     "Success": "Chỉnh sửa thành công!",
     "Error": "Có lỗi, Thử lại sau!"
+  },
+  "Avatar": {
+    "Option1": "Xem ảnh đại diện",
+    "Option2": "Chọn ảnh đại diện",
+    "Success": "Đổi ảnh đại diện thành công!",
+    "Failed": "Đổi ảnh đại diện thất bại. Thử lại!"
   }
 }

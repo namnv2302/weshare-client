@@ -29,8 +29,10 @@
     }
   },
   "NoData": {
-    "Like": "Chưa có ai thích bài viết này"
+    "Like": "Chưa có ai thích bài viết này",
+    "Search": "Chưa có kết quả!"
   },
   "Empty": "Chưa có",
-  "NotYet": "Chức năng đang phát triển"
+  "NotYet": "Chức năng đang phát triển",
+  "Friend": "Bạn bè"
 }
