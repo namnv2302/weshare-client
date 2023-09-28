@@ -22,6 +22,10 @@
     "Success": "Đổi ảnh đại diện thành công!",
     "Failed": "Đổi ảnh đại diện thất bại. Thử lại!"
   },
+  "CoverPhoto": {
+    "Success": "Đổi ảnh bìa thành công!",
+    "Failed": "Đổi ảnh bìa thất bại. Thử lại!"
+  },
   "Bio": {
     "Label": "Tiểu sử",
     "NoData": "Chưa có tiểu sử!!",

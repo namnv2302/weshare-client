@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import { Button, Col, Image, Row, Spin, Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { FileImageOutlined, LoadingOutlined, UserOutlined } from '@ant-design/icons';
+import { CameraOutlined, FileImageOutlined, LoadingOutlined, UserOutlined } from '@ant-design/icons';
 import Tippy from '@tippyjs/react/headless';
 import styles from './Profile.module.scss';
 import LeftPanel from '@pages/Profile/components/LeftPanel';
@@ -11,9 +11,9 @@ import RightPanel from '@pages/Profile/components/RightPanel';
 import CoverProfile from '@assets/images/cover-profile.png';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { upload } from '@helpers/upload';
-import { updateAvatar } from '@apis/user';
+import { updateAvatar, updateCoverPhoto } from '@apis/user';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
-import { changeAvatar } from '@slices/authorizationSlice';
+import { changeAvatar, changeCoverPhoto } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
@@ -39,6 +39,25 @@ const ProfilePage = () => {
       } catch (error) {
         setUploading(false);
         message.error(t('Avatar.Failed'));
+      }
+    },
+    [authorization, dispatch, t],
+  );
+
+  const handleUpdateCoverPhoto = useCallback(
+    async (file: any) => {
+      setUploading(true);
+      try {
+        const coverPhotoUrl = await upload(file);
+        if (authorization && coverPhotoUrl) {
+          await updateCoverPhoto(authorization.id, coverPhotoUrl);
+          dispatch(changeCoverPhoto(coverPhotoUrl));
+        }
+        setUploading(false);
+        message.success(t('CoverPhoto.Success'));
+      } catch (error) {
+        setUploading(false);
+        message.error(t('CoverPhoto.Failed'));
       }
     },
     [authorization, dispatch, t],
@@ -77,7 +96,15 @@ const ProfilePage = () => {
         />
       ) : (
         <div className={cx('wrapper')}>
-          <div className={cx('cover-profile')} style={{ backgroundImage: `url(${CoverProfile})` }}>
+          <div
+            className={cx('cover-profile')}
+            style={{ backgroundImage: `url(${authorization?.cover || CoverProfile})` }}
+          >
+            <ImgCrop rotationSlider quality={1} aspect={2.6}>
+              <Upload accept="image/jpg, image/jpeg, image/png" beforeUpload={handleUpdateCoverPhoto}>
+                <CameraOutlined className={cx('camera-icon')} />
+              </Upload>
+            </ImgCrop>
             <div>
               <Tippy
                 visible={visibleOption}

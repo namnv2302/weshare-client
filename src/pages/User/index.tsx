@@ -18,7 +18,7 @@ const UserPage = () => {
 
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('cover-profile')} style={{ backgroundImage: `url(${CoverProfile})` }}>
+      <div className={cx('cover-profile')} style={{ backgroundImage: `url(${data?.cover || CoverProfile})` }}>
         <Image className={cx('avatar')} src={data?.avatar || AvatarDefault} />
       </div>
       <Row gutter={{ lg: 32 }}>

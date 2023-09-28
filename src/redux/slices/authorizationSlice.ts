@@ -11,6 +11,7 @@ export interface AuthorizationData {
   bio: string;
   gender: string;
   avatar: string;
+  cover: string;
   role: string;
   posts: IPost[];
   following: AuthorizationData[];
@@ -39,8 +40,13 @@ export const authorizationSlice = createSlice({
         state.bio = action.payload;
       }
     },
+    changeCoverPhoto: (state, action) => {
+      if (state) {
+        state.cover = action.payload;
+      }
+    },
   },
 });
 
-export const { login, logout, update, changeAvatar, editBio } = authorizationSlice.actions;
+export const { login, logout, update, changeAvatar, editBio, changeCoverPhoto } = authorizationSlice.actions;
 export default authorizationSlice.reducer;

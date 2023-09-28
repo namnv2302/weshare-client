@@ -95,7 +95,8 @@ const PostItem = ({ data }: { data: IPost }) => {
         <MoreOutlined className={cx('right-icon')} />
       </div>
       <div className={cx('body')}>
-        {data.status ? <ReadMoreStatus status={data.status} /> : false}
+        {data.status &&
+          (data.postUrl ? <ReadMoreStatus status={data.status} /> : <ReadMoreStatus status={data.status} mb={true} />)}
         {data.postUrl ? <img src={data.postUrl} alt="post" /> : false}
       </div>
       <Divider style={{ margin: '18px 0 12px' }} />

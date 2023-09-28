@@ -22,6 +22,10 @@
     "Success": "Change avatar success!",
     "Failed": "Change avatar failed!"
   },
+  "CoverPhoto": {
+    "Success": "Change cover photo success!",
+    "Failed": "Change failed!"
+  },
   "Bio": {
     "Label": "Bio",
     "NoData": "No Bio Yet!!",

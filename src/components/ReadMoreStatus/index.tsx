@@ -4,7 +4,7 @@ import styles from './ReadMoreStatus.module.scss';
 
 const cx = classNames.bind(styles);
 
-const ReadMoreStatus = ({ status }: { status: string }) => {
+const ReadMoreStatus = ({ status, mb }: { status: string; mb?: boolean }) => {
   const statusRefEle = useRef<HTMLSpanElement | any>();
   const [isReadMore, setIsReadMore] = useState<boolean>(true);
 
@@ -17,7 +17,7 @@ const ReadMoreStatus = ({ status }: { status: string }) => {
 
   return (
     <>
-      <span ref={statusRefEle} className={cx('status')} onClick={() => setIsReadMore(!isReadMore)}></span>
+      <span ref={statusRefEle} className={cx('status', { mb: mb })} onClick={() => setIsReadMore(!isReadMore)}></span>
     </>
   );
 };

@@ -8,6 +8,7 @@ enum UserPath {
   ADDFR = 'users/:id/addfr',
   FOLLOWED = 'users/followed',
   AVATAR = 'users/:id/avatar',
+  COVER = 'users/:id/cover',
   DEFAULT = 'users',
 }
 
@@ -45,4 +46,8 @@ export const getFollowedList = () => {
 
 export const updateAvatar = async (id: string, avatar: string) => {
   return apiInstance.patch(UserPath.AVATAR.replace(':id', id), { avatar });
+};
+
+export const updateCoverPhoto = async (id: string, cover: string) => {
+  return apiInstance.patch(UserPath.COVER.replace(':id', id), { cover });
 };
