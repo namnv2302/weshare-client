@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { Divider, Dropdown, Popconfirm, Space, Typography, message } from 'antd';
-import { BellOutlined, BookOutlined, DownOutlined } from '@ant-design/icons';
+import { BellOutlined, BookOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
 import type { MenuProps } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -101,10 +101,10 @@ const RightPanel = () => {
       <Dropdown menu={{ items }} overlayStyle={{ minWidth: '160px' }} placement="topRight">
         <div className={cx('avatar-info')}>
           <img src={authorization?.avatar || DefaultAvatar} alt="Avatar" className={cx('avatar')} />
-          <Typography.Title className={cx('name')} style={{ marginBottom: 0 }}>
+          {/* <Typography.Title className={cx('name')} style={{ marginBottom: 0 }}>
             {authorization ? authorization.name : 'Jakob Botosh'}
-          </Typography.Title>
-          <DownOutlined className={cx('icon-down')} />
+          </Typography.Title> */}
+          {/* <DownOutlined className={cx('icon-down')} /> */}
         </div>
       </Dropdown>
     </div>

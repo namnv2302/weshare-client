@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Divider, Modal, Tag, Upload, message } from 'antd';
+import { Button, Divider, Modal, Tag, Upload, message, notification } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import classNames from 'classnames/bind';
 import { CloseOutlined, DownOutlined, FileImageOutlined, PaperClipOutlined } from '@ant-design/icons';
@@ -10,7 +10,7 @@ import { useAppSelector } from 'redux/hooks';
 import styles from './CreatePostModal.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { createPost } from '@apis/post';
-import { upload } from '@helpers/upload';
+import { uploadImage } from '@helpers/upload';
 import { useAppDispatch } from 'redux/hooks';
 import { fetchPostList } from '@slices/postSlice';
 
@@ -62,7 +62,7 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
           setCreating(false);
         }, 2000);
       } else {
-        const postUrl = await upload(previewPostUrl);
+        const postUrl = await uploadImage(previewPostUrl);
         await createPost({ status, postUrl });
         dispatch(fetchPostList());
         // dispatch(createPostAction({ status, postUrl, user: authorization }));
@@ -139,7 +139,12 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
             />
           </ImgCrop>
         </label>
-        <Tag icon={<PaperClipOutlined className={cx('item-icon')} />} color="#f8f8f8" style={{ cursor: 'pointer' }}>
+        <Tag
+          icon={<PaperClipOutlined className={cx('item-icon')} />}
+          color="#f8f8f8"
+          style={{ cursor: 'pointer' }}
+          onClick={() => notification.info({ message: t('Common:NotYet'), placement: 'top' })}
+        >
           <span className={cx('item-text')}>{t('Posts.Attachment')}</span>
         </Tag>
       </div>

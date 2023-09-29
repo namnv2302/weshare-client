@@ -1,4 +1,3 @@
-import { Space } from 'antd';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import Logo from './components/Logo';

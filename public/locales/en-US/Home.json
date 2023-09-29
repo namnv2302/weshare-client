@@ -25,5 +25,7 @@
     "Search": "Search"
   },
   "Failed": "Request failed",
-  "YourStory": "Your Story"
+  "Story": {
+    "Create": "Create story"
+  }
 }

@@ -19,18 +19,23 @@ const Posts = () => {
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <img src={authorization?.avatar || AvatarDefault} alt="Avatar" className={cx('avatar')} />
-        <Input className={cx('input')} placeholder={t('Search.Placeholder')} suffix={<SmileOutlined />} />
+        <Input
+          className={cx('input')}
+          placeholder={t('Search.Placeholder')}
+          suffix={<SmileOutlined />}
+          onClick={() => setIsOpenModal(true)}
+        />
         <button className={cx('button')} onClick={() => setIsOpenModal(true)}>
           {t('Button.Label')}
         </button>
       </div>
       <Divider style={{ margin: '16px 0' }} />
       <div className={cx('options')}>
-        <div className={cx('item')}>
+        <div className={cx('item')} onClick={() => setIsOpenModal(true)}>
           <FileImageOutlined className={cx('icon')} />
           <span className="text-default">{t('Posts.Image')}</span>
         </div>
-        <div className={cx('item')}>
+        <div className={cx('item')} onClick={() => setIsOpenModal(true)}>
           <PaperClipOutlined className={cx('icon')} />
           <span className="text-default">{t('Posts.Attachment')}</span>
         </div>

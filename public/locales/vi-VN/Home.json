@@ -25,5 +25,7 @@
     "Search": "Tìm kiếm"
   },
   "Failed": "Yêu cầu chưa được gửi",
-  "YourStory": "Tin của bạn"
+  "Story": {
+    "Create": "Tạo tin"
+  }
 }

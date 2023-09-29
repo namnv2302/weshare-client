@@ -10,7 +10,7 @@ import LeftPanel from '@pages/Profile/components/LeftPanel';
 import RightPanel from '@pages/Profile/components/RightPanel';
 import CoverProfile from '@assets/images/cover-profile.png';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
-import { upload } from '@helpers/upload';
+import { uploadImage } from '@helpers/upload';
 import { updateAvatar, updateCoverPhoto } from '@apis/user';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { changeAvatar, changeCoverPhoto } from '@slices/authorizationSlice';
@@ -29,7 +29,7 @@ const ProfilePage = () => {
     async (file: any) => {
       setUploading(true);
       try {
-        const avatarUrl = await upload(file);
+        const avatarUrl = await uploadImage(file);
         if (authorization && avatarUrl) {
           await updateAvatar(authorization?.id, avatarUrl);
           dispatch(changeAvatar({ avatar: avatarUrl }));
@@ -48,7 +48,7 @@ const ProfilePage = () => {
     async (file: any) => {
       setUploading(true);
       try {
-        const coverPhotoUrl = await upload(file);
+        const coverPhotoUrl = await uploadImage(file);
         if (authorization && coverPhotoUrl) {
           await updateCoverPhoto(authorization.id, coverPhotoUrl);
           dispatch(changeCoverPhoto(coverPhotoUrl));

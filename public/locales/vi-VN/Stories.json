@@ -1,0 +1,17 @@
+{
+  "Label": "Tin của bạn",
+  "Options": {
+    "Option1": "Tạo tin ảnh",
+    "Option2": "Tạo tin văn bản"
+  },
+  "Input": {
+    "Placeholder": "Văn bản"
+  },
+  "Button": {
+    "Discard": "Hủy bỏ",
+    "Share": "Chia sẻ"
+  },
+  "Preview": {
+    "Label": "Xem trước"
+  }
+}

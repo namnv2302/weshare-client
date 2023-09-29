@@ -2,12 +2,15 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import ROUTE_PATH from '@constants/routes';
 
-// pages
+import StoriesCreateLayout from '@layouts/StoriesCreateLayout';
 import HeaderLayout from '@layouts/HeaderLayout';
+
+// pages
 import SignInPage from '@pages/SignIn';
 import HomePage from '@pages/Home';
 import ProfilePage from '@pages/Profile';
 import UserPage from '@pages/User';
+import StoriesCreatePage from '@pages/StoriesCreate';
 import NotFoundPage from '@pages/NotFound';
 
 type publicRoutesType = {
@@ -43,6 +46,11 @@ export const publicRoutes: publicRoutesType[] = [
     path: ROUTE_PATH.USER,
     component: UserPage,
     layout: HeaderLayout,
+  },
+  {
+    path: ROUTE_PATH.STORIES,
+    component: StoriesCreatePage,
+    layout: StoriesCreateLayout,
   },
   {
     path: ROUTE_PATH.NOT_FOUND,

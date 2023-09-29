@@ -1,0 +1,17 @@
+{
+  "Label": "Your story",
+  "Options": {
+    "Option1": "Create a photo story",
+    "Option2": "Create a text story"
+  },
+  "Input": {
+    "Placeholder": "Start typing"
+  },
+  "Button": {
+    "Discard": "Discard",
+    "Share": "Share"
+  },
+  "Preview": {
+    "Label": "Preview"
+  }
+}
