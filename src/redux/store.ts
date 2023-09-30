@@ -9,6 +9,10 @@ export const store = configureStore({
     post: postReducer,
     stories: storiesReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;

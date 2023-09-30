@@ -9,9 +9,18 @@
   },
   "Button": {
     "Discard": "Hủy bỏ",
-    "Share": "Chia sẻ"
+    "Share": "Chia sẻ",
+    "Success": "Tạo tin thành công!",
+    "Failed": "Tạo tin thất bại. Thử lại!",
+    "Info": "Tin của bạn trống!"
   },
   "Preview": {
     "Label": "Xem trước"
+  },
+  "DiscardModal": {
+    "Title": "Hủy tạo tin?",
+    "Desc": "Bạn có chắc chắn muốn hủy tin này? Tin của bạn không được lưu.",
+    "Discard": "Hủy bỏ",
+    "Continue": "Tiếp tục"
   }
 }

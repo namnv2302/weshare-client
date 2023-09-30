@@ -9,9 +9,18 @@
   },
   "Button": {
     "Discard": "Discard",
-    "Share": "Share"
+    "Share": "Share",
+    "Success": "Create story success!",
+    "Failed": "Create story failed!",
+    "Info": "Your story empty!"
   },
   "Preview": {
     "Label": "Preview"
+  },
+  "DiscardModal": {
+    "Title": "Discard story?",
+    "Desc": "Are you sure you want to discard this story? Your story won't be saved.",
+    "Discard": "Discard",
+    "Continue": "Continue editing"
   }
 }

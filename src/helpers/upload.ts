@@ -3,7 +3,9 @@ import { storage } from '@utils/firebase';
 
 export const uploadImage = async (file: any) => {
   try {
-    const storageRef = ref(storage, `${file.uid}.png`);
+    const extName = file.name.split('.')[1];
+    const nameFile = file.name.split('.')[0];
+    const storageRef = ref(storage, `${nameFile}-${file.uid}.${extName}`);
     await uploadBytes(storageRef, file);
     return await getDownloadURL(storageRef);
   } catch (error) {
