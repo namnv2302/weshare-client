@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { PlusOutlined } from '@ant-design/icons';
 import styles from './CreateStories.module.scss';
-import AvatarDefault from '@assets/images/avatar_default.jpeg';
-import { useAppSelector } from 'redux/hooks';
 import ROUTE_PATH from '@constants/routes';
 
 const cx = classNames.bind(styles);
@@ -12,15 +10,17 @@ const cx = classNames.bind(styles);
 const CreateStories = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const authorization = useAppSelector((state) => state.authorization);
 
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('avatar')} onClick={() => navigate(ROUTE_PATH.STORIES)}>
-        <img src={authorization?.avatar || AvatarDefault} alt="" />
-        <PlusOutlined className={cx('plus-icon')} />
+    <div className={cx('story-item', 'add-story')}>
+      <div className={cx('body')} style={{ backgroundColor: '#343a40' }}>
+        <div className={cx('info')} onClick={() => navigate(ROUTE_PATH.STORIES)}>
+          <div className={cx('icon')}>
+            <PlusOutlined className={cx('plus-icon')} />
+          </div>
+          <h4 className={cx('add')}>{t('Home:Story.Create')}</h4>
+        </div>
       </div>
-      <span className={cx('label')}>{t('Home:Story.Create')}</span>
     </div>
   );
 };

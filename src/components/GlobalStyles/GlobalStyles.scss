@@ -138,6 +138,11 @@ html *::-webkit-scrollbar-track {
 
 // Overide emoji css
 
+// Overide react slick
+.slick-track {
+  margin-left: unset !important;
+}
+
 //
 .text-default {
   font-size: 1.4rem;

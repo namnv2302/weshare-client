@@ -8,3 +8,7 @@ enum StoryPath {
 export const createStory = (payload: IStory) => {
   return apiInstance.post(StoryPath.DEFAULT, { ...payload });
 };
+
+export const getStoryList = () => {
+  return apiInstance.get(StoryPath.DEFAULT);
+};
