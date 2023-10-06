@@ -4,13 +4,16 @@ import ROUTE_PATH from '@constants/routes';
 
 import StoriesCreateLayout from '@layouts/StoriesCreateLayout';
 import HeaderLayout from '@layouts/HeaderLayout';
+import StoriesLayout from '@layouts/StoriesLayout';
 
 // pages
 import SignInPage from '@pages/SignIn';
 import HomePage from '@pages/Home';
 import ProfilePage from '@pages/Profile';
 import UserPage from '@pages/User';
+import StoriesPage from '@pages/Stories';
 import StoriesCreatePage from '@pages/StoriesCreate';
+import StoriesDetailPage from '@pages/StoriesDetail';
 import NotFoundPage from '@pages/NotFound';
 
 type publicRoutesType = {
@@ -49,8 +52,18 @@ export const publicRoutes: publicRoutesType[] = [
   },
   {
     path: ROUTE_PATH.STORIES,
+    component: StoriesPage,
+    layout: StoriesLayout,
+  },
+  {
+    path: ROUTE_PATH.STORIES_CREATE,
     component: StoriesCreatePage,
     layout: StoriesCreateLayout,
+  },
+  {
+    path: ROUTE_PATH.STORIES_DETAIL,
+    component: StoriesDetailPage,
+    layout: StoriesLayout,
   },
   {
     path: ROUTE_PATH.NOT_FOUND,

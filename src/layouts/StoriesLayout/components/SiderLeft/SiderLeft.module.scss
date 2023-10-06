@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .head {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 100%;
+      color: var(--text-second);
+      background-color: var(--bg-second);
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+
+      .label {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .desc {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--text-second);
+      }
+    }
+  }
+
+  .stories-wrap {
+    flex: 1;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

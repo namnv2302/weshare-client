@@ -1,5 +1,6 @@
 {
   "Label": "Your story",
+  "Label2": "Stories",
   "Options": {
     "Option1": "Create a photo story",
     "Option2": "Create a text story"
@@ -22,5 +23,10 @@
     "Desc": "Are you sure you want to discard this story? Your story won't be saved.",
     "Discard": "Discard",
     "Continue": "Continue editing"
-  }
+  },
+  "Create": {
+    "Label": "Create a story",
+    "Desc": "Share a photo or write something"
+  },
+  "Select": "Select a story to open."
 }

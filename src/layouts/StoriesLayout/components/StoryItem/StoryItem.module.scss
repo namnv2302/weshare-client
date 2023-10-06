@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: var(--border-radius-default);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--bg-second);
+  }
+
+  img {
+    width: 54px;
+    height: 54px;
+    border-radius: 100%;
+    padding: 1px;
+    border: 3px solid var(--primary-color);
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+
+    .name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .time {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+  }
+}

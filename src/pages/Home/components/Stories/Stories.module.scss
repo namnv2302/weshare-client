@@ -72,33 +72,6 @@
       flex-direction: column;
       align-items: center;
 
-      .icon {
-        width: 44px;
-        height: 44px;
-
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 100%;
-          display: block;
-          object-fit: cover;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-        }
-      }
-
-      .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        // background-color: red;
-        border-radius: 100%;
-
-        .plus-icon {
-          font-size: 2rem;
-          color: #1e74fd;
-        }
-      }
-
       .add,
       .name {
         font-size: 1.2rem;

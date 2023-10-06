@@ -14,7 +14,7 @@ const CreateStories = () => {
   return (
     <div className={cx('story-item', 'add-story')}>
       <div className={cx('body')} style={{ backgroundColor: '#343a40' }}>
-        <div className={cx('info')} onClick={() => navigate(ROUTE_PATH.STORIES)}>
+        <div className={cx('info')} onClick={() => navigate(ROUTE_PATH.STORIES_CREATE)}>
           <div className={cx('icon')}>
             <PlusOutlined className={cx('plus-icon')} />
           </div>

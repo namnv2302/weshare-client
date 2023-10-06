@@ -1,5 +1,6 @@
 {
   "Label": "Tin của bạn",
+  "Label2": "Tin",
   "Options": {
     "Option1": "Tạo tin ảnh",
     "Option2": "Tạo tin văn bản"
@@ -22,5 +23,10 @@
     "Desc": "Bạn có chắc chắn muốn hủy tin này? Tin của bạn không được lưu.",
     "Discard": "Hủy bỏ",
     "Continue": "Tiếp tục"
-  }
+  },
+  "Create": {
+    "Label": "Tạo tin",
+    "Desc": "Chia sẻ một ảnh hoặc viết gì đó"
+  },
+  "Select": "Chọn một tin để mở."
 }

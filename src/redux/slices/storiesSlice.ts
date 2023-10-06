@@ -13,6 +13,7 @@ export interface IStory {
   bgColor?: string;
   storyUrl?: string;
   owner?: AuthorizationData;
+  createdAt?: Date;
 }
 
 type StoriesState = {
