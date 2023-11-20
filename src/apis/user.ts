@@ -10,7 +10,12 @@ enum UserPath {
   AVATAR = 'users/:id/avatar',
   COVER = 'users/:id/cover',
   DEFAULT = 'users',
+  DETAIL = 'users/:id',
 }
+
+export const getUserById = async (id: string) => {
+  return apiInstance.get(UserPath.DETAIL.replace(':id', id));
+};
 
 export const getUserByName = (name: string) => {
   return apiInstance.get(UserPath.DEFAULT, {

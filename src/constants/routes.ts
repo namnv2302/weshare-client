@@ -7,6 +7,7 @@ const ROUTE_PATH = {
   STORIES_DETAIL: '/stories/:id',
   SIGN_IN: '/sign-in',
   REGISTER: '/register',
+  LOGIN_SUCCESS: '/sign-in/success',
   NOT_FOUND: '404',
   OTHER: '*',
 };

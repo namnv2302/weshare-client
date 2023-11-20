@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { Divider, Dropdown, Popconfirm, Space, Typography, message } from 'antd';
-import { BellOutlined, BookOutlined } from '@ant-design/icons';
+import { BellOutlined, MessageOutlined } from '@ant-design/icons';
+import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import type { MenuProps } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +14,7 @@ import { logout } from '@apis/auth';
 import { logout as logoutAction } from '@slices/authorizationSlice';
 import ROUTE_PATH from '@constants/routes';
 import { clearLocalstorageToken } from '@utils/localstorage';
+import Messenger from '@components/Messenger';
 
 const cx = classNames.bind(styles);
 
@@ -90,13 +92,23 @@ const RightPanel = () => {
     },
   ];
 
+  const renderResult = useCallback((attrs: any) => {
+    return (
+      <div tabIndex="-1" {...attrs}>
+        <Messenger />
+      </div>
+    );
+  }, []);
+
   return (
     <div className={cx('wrapper')}>
       <Space>
-        <BellOutlined className={cx('icon')} />
+        <Tippy visible interactive delay={[0, 500]} placement="bottom" render={renderResult}>
+          <MessageOutlined className={cx('icon')} />
+        </Tippy>
       </Space>
       <Space>
-        <BookOutlined className={cx('icon')} />
+        <BellOutlined className={cx('icon')} />
       </Space>
       <Dropdown menu={{ items }} overlayStyle={{ minWidth: '160px' }} placement="topRight">
         <div className={cx('avatar-info')}>

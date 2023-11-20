@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { v4 as uuIdV4 } from 'uuid';
 import type { TabsProps } from 'antd';
 import classNames from 'classnames/bind';
-import styles from './TabsConent.module.scss';
+import styles from './TabsContent.module.scss';
 import useFollowedList from '@hooks/users/useFollowedList';
 import FriendRequestItem from '@layouts/components/SiderRight/components/FriendRequestItem';
 import FriendItem from '@layouts/components/SiderRight/components/FriendItem';
@@ -12,7 +12,7 @@ import { useAppSelector } from 'redux/hooks';
 
 const cx = classNames.bind(styles);
 
-const TabsConent = () => {
+const TabsContent = () => {
   const { t } = useTranslation();
   const authorization = useAppSelector((state) => state.authorization);
   const { data: dataFollowed } = useFollowedList();
@@ -48,4 +48,4 @@ const TabsConent = () => {
   return <Tabs className={cx('wrapper')} items={items} />;
 };
 
-export default TabsConent;
+export default TabsContent;

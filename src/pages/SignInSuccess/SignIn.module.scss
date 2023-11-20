@@ -1,0 +1,128 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  cursor: default;
+
+  .inner {
+    flex: 1;
+    padding: 36px 60px;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 2.4rem;
+      font-weight: 600;
+
+      .logo-icon {
+        margin-right: 10px;
+      }
+    }
+
+    .heading {
+      font-size: 3rem;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .provider {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+
+      .google {
+        display: inline-block;
+        padding: 4px;
+        border-radius: 100%;
+        border: 1.5px solid var(--primary-color);
+        cursor: pointer;
+
+        img {
+          width: 28px;
+          height: 28px;
+          display: block;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .description {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 18px 0;
+    }
+
+    .form {
+      .input {
+        -webkit-appearance: none;
+        appearance: none;
+        padding: 6px 12px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        background-color: #f3f3f5;
+        border: 1px solid #bcc0c4;
+        border-radius: 8px;
+        outline: none;
+
+        input {
+          background-color: #f3f3f5 !important;
+        }
+      }
+
+      .login {
+        width: 49%;
+        height: 34px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        border-radius: 8px;
+        background-color: var(--primary-color);
+      }
+
+      .create {
+        width: 49%;
+        height: 34px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        border-radius: 8px;
+        border: 1px solid var(--primary-color);
+        margin-left: 12px;
+      }
+    }
+
+    .forgot-pw {
+      text-align: center;
+      margin-top: 40px;
+
+      a {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+    }
+
+    .terms {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 10px;
+
+      .highlight {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  .background {
+    display: block;
+    object-fit: cover;
+    width: 50%;
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+}

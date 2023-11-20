@@ -15,6 +15,7 @@ import StoriesPage from '@pages/Stories';
 import StoriesCreatePage from '@pages/StoriesCreate';
 import StoriesDetailPage from '@pages/StoriesDetail';
 import NotFoundPage from '@pages/NotFound';
+import SignInSuccessPage from '@pages/SignInSuccess';
 
 type publicRoutesType = {
   path: string;
@@ -64,6 +65,10 @@ export const publicRoutes: publicRoutesType[] = [
     path: ROUTE_PATH.STORIES_DETAIL,
     component: StoriesDetailPage,
     layout: StoriesLayout,
+  },
+  {
+    path: ROUTE_PATH.LOGIN_SUCCESS,
+    component: SignInSuccessPage,
   },
   {
     path: ROUTE_PATH.NOT_FOUND,
