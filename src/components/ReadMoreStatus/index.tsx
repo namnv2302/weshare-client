@@ -10,8 +10,14 @@ const ReadMoreStatus = ({ status, mb }: { status: string; mb?: boolean }) => {
 
   useEffect(() => {
     if (status) {
-      const text = isReadMore ? status.slice(0, 160) : status;
-      statusRefEle.current.innerHTML = `${text} ${isReadMore ? '...' : ''}`;
+      let text;
+      if (status.length < 160) {
+        text = status;
+        statusRefEle.current.innerHTML = `${text}`;
+      } else {
+        text = isReadMore ? status.slice(0, 160) : status;
+        statusRefEle.current.innerHTML = `${text} ${isReadMore ? '...' : ''}`;
+      }
     }
   }, [status, isReadMore]);
 

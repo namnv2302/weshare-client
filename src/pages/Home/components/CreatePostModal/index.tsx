@@ -63,13 +63,18 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
         }, 2000);
       } else {
         const postUrl = await uploadImage(previewPostUrl);
-        await createPost({ status, postUrl });
-        dispatch(fetchPostList());
-        // dispatch(createPostAction({ status, postUrl, user: authorization }));
+        console.log(postUrl);
+        const resp = await createPost({ status, postUrl });
+        if (resp.status === 201) {
+          dispatch(fetchPostList());
+          message.success(t('Post.Success'));
+        } else {
+          // dispatch(createPostAction({ status, postUrl, user: authorization }));
+          message.error(t('Post.Failure'));
+        }
         setIsOpenModal(false);
-        clearField();
-        message.success(t('Post.Success'));
         setCreating(false);
+        clearField();
       }
     } catch (error) {
       clearField();

@@ -19,7 +19,8 @@
   "Post": {
     "Require": "Your status or image empty!",
     "Success": "Create a post success!",
-    "NoData": "Please share your feel!"
+    "NoData": "Please share your feel!",
+    "Failure": "Create a post failure!"
   },
   "Logout": {
     "Sure": "Are you sure want to logout?",

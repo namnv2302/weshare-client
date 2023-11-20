@@ -19,7 +19,8 @@
   "Post": {
     "Require": "Hãy chia sẽ trạng thái của bạn!",
     "Success": "Tạo bài viết thành công!",
-    "NoData": "Hãy chia sẻ cảm xúc của bạn!"
+    "NoData": "Hãy chia sẻ cảm xúc của bạn!",
+    "Failure": "Tạo bài viết thất bại, thử lại!"
   },
   "Logout": {
     "Sure": "Bạn có chắc chắn muốn đăng xuất?",
