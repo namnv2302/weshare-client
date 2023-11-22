@@ -15,6 +15,7 @@ import { logout as logoutAction } from '@slices/authorizationSlice';
 import ROUTE_PATH from '@constants/routes';
 import { clearLocalstorageToken } from '@utils/localstorage';
 import Messenger from '@components/Messenger';
+import { openMessenger } from '@slices/settingsSlice';
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +23,7 @@ const RightPanel = () => {
   const { t, i18n } = useTranslation(['Home', 'Common']);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { isOpenMessenger } = useAppSelector((state) => state.settings);
   const authorization = useAppSelector((state) => state.authorization);
 
   const languagesOption = useMemo(() => {
@@ -103,8 +105,8 @@ const RightPanel = () => {
   return (
     <div className={cx('wrapper')}>
       <Space>
-        <Tippy visible interactive delay={[0, 500]} placement="bottom" render={renderResult}>
-          <MessageOutlined className={cx('icon')} />
+        <Tippy visible={isOpenMessenger} interactive delay={[0, 500]} placement="bottom" render={renderResult}>
+          <MessageOutlined className={cx('icon')} onClick={() => dispatch(openMessenger(!isOpenMessenger))} />
         </Tippy>
       </Space>
       <Space>

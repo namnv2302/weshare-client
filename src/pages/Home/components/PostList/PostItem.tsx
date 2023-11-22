@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './PostList.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { IPost } from '@hooks/posts/usePosts';
-import { DATE_FORMAT } from '@constants/time';
+// import { DATE_FORMAT } from '@constants/time';
 import { ShareIcon, HeartIcon } from '@components/Icons';
 import { like, unlike } from '@apis/post';
 import { useAppSelector } from 'redux/hooks';
@@ -89,7 +89,7 @@ const PostItem = ({ data }: { data: IPost }) => {
             >
               {data.user?.name || 'Jakob Botosh'}
             </span>
-            <span className={cx('time')}>{moment(data.createdAt).format(DATE_FORMAT)}</span>
+            <span className={cx('time')}>{moment(data.createdAt).calendar()}</span>
           </span>
         </div>
         <MoreOutlined className={cx('right-icon')} />

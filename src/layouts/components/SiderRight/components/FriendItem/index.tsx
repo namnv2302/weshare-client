@@ -1,19 +1,19 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Typography } from 'antd';
 import classNames from 'classnames/bind';
 import styles from './FriendItem.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { AuthorizationData } from '@slices/authorizationSlice';
-import ChatBox from '@components/ChatBox';
+// import ChatBox from '@components/ChatBox';
 
 const cx = classNames.bind(styles);
 
 const FriendItem = ({ data, size }: { data: AuthorizationData; size?: string }) => {
-  const [open, setOpen] = useState<boolean>(false);
+  // const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>
-      <div className={cx('item', { small: size === 'small' })} onClick={() => setOpen(true)}>
+      <div className={cx('item', { small: size === 'small' })}>
         <div className={cx('left')}>
           <div className={cx('avatar')}>
             <img src={data.avatar || AvatarDefault} alt="Avatar" />
@@ -23,7 +23,7 @@ const FriendItem = ({ data, size }: { data: AuthorizationData; size?: string }) 
           </div>
         </div>
       </div>
-      <ChatBox data={data} open={open} setOpen={setOpen} />
+      {/* <ChatBox data={data} open={open} setOpen={setOpen} /> */}
     </>
   );
 };

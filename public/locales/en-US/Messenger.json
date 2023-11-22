@@ -4,5 +4,6 @@
     "Item1": "Primary",
     "Item2": "Requests"
   },
-  "Search": "Search"
+  "Search": "Search",
+  "NoMessages": "No messages in conversation"
 }

@@ -19,11 +19,10 @@ const LeftPanel = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [editing, setEditing] = useState<boolean>(false);
   const [showEmojiModal, setShowEmojiModal] = useState<boolean>(false);
-  const [bio, setBio] = useState<any>('');
+  const [bio, setBio] = useState<any>(authorization?.bio);
 
   const addEmoji = useCallback(
     (e: any) => {
-      console.log(e);
       const sym = e.unified.split('-');
       const codeArray: any = [];
       sym.forEach((el: any) => codeArray.push('0x' + el));
@@ -35,6 +34,7 @@ const LeftPanel = () => {
 
   const editBio = useCallback(async () => {
     setEditing(true);
+    setShowEmojiModal(false);
     try {
       if (authorization) {
         const resp = await updateUser(authorization?.id, { bio: bio });
@@ -42,7 +42,6 @@ const LeftPanel = () => {
           dispatch(editBioAction(bio));
           setEditing(false);
           setIsEdit(false);
-          setBio('');
           message.success(t('Bio.Success'));
         }
       }

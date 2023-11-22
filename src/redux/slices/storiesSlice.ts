@@ -31,7 +31,7 @@ const initialState: StoriesState = {
 };
 
 export const storiesSlice = createSlice({
-  name: 'post',
+  name: 'story',
   initialState,
   reducers: {
     setStoriesOption: (state, action) => {

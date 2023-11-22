@@ -4,6 +4,7 @@ import { fetchPostList } from '@slices/postSlice';
 import Stories from '@pages/Home/components/Stories';
 import Posts from '@pages/Home/components/Posts';
 import PostList from '@pages/Home/components/PostList';
+import ChatBox from '@components/ChatBox';
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ const HomePage = () => {
       <Stories />
       <Posts />
       <PostList posts={posts} loading={loading} />
+      <ChatBox />
     </>
   );
 };

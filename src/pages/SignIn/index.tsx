@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import classNames from 'classnames/bind';
 import { Form, Input, Button, message } from 'antd';
-import { Link, useNavigate, Navigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 import LogoImage from '@assets/images/logo.png';
 import GoogleImage from '@assets/images/google.png';
@@ -16,7 +16,6 @@ const cx = classNames.bind(styles);
 
 const SignInPage = () => {
   const [form] = Form.useForm();
-  const params = useParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.authorization);
@@ -50,8 +49,6 @@ const SignInPage = () => {
   const handleLoginWithGoogle = useCallback(async () => {
     window.open('http://localhost:8080/api/auth/google', '_self');
   }, []);
-
-  console.log(params);
 
   if (authorization) {
     <Navigate to={ROUTE_PATH.HOME} />;

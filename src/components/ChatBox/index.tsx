@@ -1,46 +1,84 @@
-import { useState, useCallback } from 'react';
+import { useMemo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CloseOutlined, SendOutlined } from '@ant-design/icons';
-import { Divider, Input } from 'antd';
+import moment from 'moment';
+import { Divider, Input, Typography } from 'antd';
 import classNames from 'classnames/bind';
 import { v4 as uuIdV4 } from 'uuid';
 import styles from './ChatBox.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
-import { AuthorizationData } from '@slices/authorizationSlice';
+import { useAppSelector, useAppDispatch } from 'redux/hooks';
+import useRecipient from '@hooks/chats/useRecipient';
+import useMessages from '@hooks/messages/useMessages';
+import { openChatBox } from '@slices/settingsSlice';
+import { setCurrentChat } from '@slices/chatsSlice';
+import EmptyBoxImage from '@assets/images/empty-box.png';
 
 const cx = classNames.bind(styles);
 
-const ChatBox = ({ data, open, setOpen }: { data: AuthorizationData; open: boolean; setOpen: any }) => {
-  const [message, setMessage] = useState<string>('');
+const ChatBox = () => {
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const { currentChat } = useAppSelector((state) => state.chats);
+  const authorization = useAppSelector((state) => state.authorization);
+  const { isOpenChatBox } = useAppSelector((state) => state.settings);
+  const userId = useMemo(() => {
+    if (authorization) return authorization.id;
+    return '';
+  }, [authorization]);
+  const chat = useMemo(() => {
+    if (currentChat) return currentChat;
+    return {};
+  }, [currentChat]);
+  const chatId = useMemo(() => {
+    if (currentChat && currentChat.id) return currentChat.id;
+    return 'string';
+  }, [currentChat]);
+  const { data: recipientData } = useRecipient(chat, userId);
+  const { data: messages } = useMessages(chatId);
+  const [text, setText] = useState<string>('');
 
-  const handleSend = useCallback(() => {
-    console.log(123);
-  }, []);
+  const handleOpenChatBox = useCallback(() => {
+    dispatch(openChatBox(false));
+    dispatch(setCurrentChat(null));
+  }, [dispatch]);
 
   return (
-    <div className={cx('wrapper', { open: open })}>
+    <div className={cx('wrapper', { open: isOpenChatBox })}>
       <header className={cx('header')}>
         <div className={cx('avatar')}>
-          <img src={data.avatar || AvatarDefault} alt="" />
+          <img src={recipientData ? recipientData.avatar || AvatarDefault : ''} alt="" />
         </div>
         <div className={cx('action')}>
-          <p className={cx('name')}>{data.name}</p>
+          <p className={cx('name')}>{recipientData ? recipientData.name : false}</p>
           <span className={cx('status')}>
             <span className={cx('dot')}></span>
-            <span className={cx('online')}>Available</span>
+            <span className={cx('online')}>Online</span>
           </span>
         </div>
-        <CloseOutlined className={cx('close-icon')} onClick={() => setOpen(false)} />
+        <CloseOutlined className={cx('close-icon')} onClick={handleOpenChatBox} />
       </header>
       <Divider style={{ margin: '0' }} />
       <div className={cx('body')}>
-        <div key={uuIdV4()} className={cx('message-fri')}>
-          <p className={cx('title')}>Alo</p>
-          <span className={cx('timer')}>12:00</span>
-        </div>
-        <div key={uuIdV4()} className={cx('message')}>
-          <p className={cx('title')}>Alo</p>
-          <span className={cx('timer')}>12:00</span>
-        </div>
+        {messages && messages?.length > 0 ? (
+          messages?.map((message) => (
+            <div
+              key={uuIdV4()}
+              className={cx('', {
+                'message-fri': message.senderId !== userId,
+                message: message.senderId === userId,
+              })}
+            >
+              <p className={cx('title')}>{message.text}</p>
+              <span className={cx('timer')}>{moment(message.createdAt).calendar()}</span>
+            </div>
+          ))
+        ) : (
+          <div className={cx('empty')}>
+            <img src={EmptyBoxImage} alt="Empty" />
+            <Typography.Text className={cx('no-text')}>{t('Messenger:NoMessages')}</Typography.Text>
+          </div>
+        )}
       </div>
       <Divider style={{ margin: '0' }} />
       <div className={cx('footer')}>
@@ -48,9 +86,9 @@ const ChatBox = ({ data, open, setOpen }: { data: AuthorizationData; open: boole
           <Input
             className={cx('input')}
             placeholder="Start typing.."
-            suffix={<SendOutlined className={cx('send-icon')} onClick={handleSend} />}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            suffix={<SendOutlined className={cx('send-icon')} />}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
       </div>
