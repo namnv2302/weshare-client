@@ -2,7 +2,7 @@ import { useMemo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CloseOutlined, SendOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import { Divider, Input, Typography } from 'antd';
+import { Divider, Input, Typography, message as messageAntd } from 'antd';
 import classNames from 'classnames/bind';
 import { v4 as uuIdV4 } from 'uuid';
 import styles from './ChatBox.module.scss';
@@ -13,6 +13,7 @@ import useMessages from '@hooks/messages/useMessages';
 import { openChatBox } from '@slices/settingsSlice';
 import { setCurrentChat } from '@slices/chatsSlice';
 import EmptyBoxImage from '@assets/images/empty-box.png';
+import { createMessage } from '@apis/message';
 
 const cx = classNames.bind(styles);
 
@@ -42,6 +43,25 @@ const ChatBox = () => {
     dispatch(openChatBox(false));
     dispatch(setCurrentChat(null));
   }, [dispatch]);
+
+  const handleSendMessage = useCallback(async () => {
+    if (!text.trim()) {
+      messageAntd.warning('Your message empty!!!');
+    }
+    try {
+      const resp = await createMessage({
+        chatId: chatId,
+        senderId: userId,
+        text: text.trim(),
+      });
+      if (resp.status === 201) {
+        messages?.push(resp.data.data);
+        setText('');
+      }
+    } catch (error) {
+      messageAntd.error('Send message failure!');
+    }
+  }, [text, chatId, userId, messages]);
 
   return (
     <div className={cx('wrapper', { open: isOpenChatBox })}>
@@ -86,9 +106,10 @@ const ChatBox = () => {
           <Input
             className={cx('input')}
             placeholder="Start typing.."
-            suffix={<SendOutlined className={cx('send-icon')} />}
+            suffix={<SendOutlined className={cx('send-icon')} onClick={handleSendMessage} />}
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onPressEnter={handleSendMessage}
           />
         </div>
       </div>
