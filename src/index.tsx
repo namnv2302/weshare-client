@@ -7,17 +7,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from '@components/GlobalStyles';
 import { store } from 'redux/store';
+import WebsocketProvider from 'context/WebsocketProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
-    <Router>
-      <I18nextProvider i18n={i18n}>
-        <GlobalStyles>
-          <App />
-        </GlobalStyles>
-      </I18nextProvider>
-    </Router>
+    <WebsocketProvider>
+      <Router>
+        <I18nextProvider i18n={i18n}>
+          <GlobalStyles>
+            <App />
+          </GlobalStyles>
+        </I18nextProvider>
+      </Router>
+    </WebsocketProvider>
   </Provider>,
 );
 

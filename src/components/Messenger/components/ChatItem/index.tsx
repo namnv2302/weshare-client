@@ -14,6 +14,7 @@ const cx = classNames.bind(styles);
 const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.authorization);
+  const { onlineUsers } = useAppSelector((state) => state.chats);
   const userId = useMemo(() => {
     if (authorization) return authorization.id;
     return '';
@@ -35,7 +36,7 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
           <div className={cx('left')}>
             <div className={cx('avatar')}>
               <img src={data.avatar || AvatarDefault} alt="Avatar" />
-              <div className={cx('online')}></div>
+              {onlineUsers.some((user) => user.userId === data.id) ? <div className={cx('online')}></div> : false}
             </div>
             <div className={cx('text-info')}>
               <Typography.Text className={cx('name')}>{data.name || 'Jakob botosh'}</Typography.Text>

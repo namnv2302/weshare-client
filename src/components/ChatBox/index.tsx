@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CloseOutlined, SendOutlined } from '@ant-design/icons';
 import moment from 'moment';
@@ -9,18 +9,21 @@ import styles from './ChatBox.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import useRecipient from '@hooks/chats/useRecipient';
-import useMessages from '@hooks/messages/useMessages';
+import useMessages, { IMessage } from '@hooks/messages/useMessages';
 import { openChatBox } from '@slices/settingsSlice';
-import { setCurrentChat } from '@slices/chatsSlice';
+import { setCurrentChat, setOnlineUsers } from '@slices/chatsSlice';
 import EmptyBoxImage from '@assets/images/empty-box.png';
 import { createMessage } from '@apis/message';
+import { WebsocketContext } from 'context/WebsocketProvider';
+import { AuthorizationData } from '@slices/authorizationSlice';
 
 const cx = classNames.bind(styles);
 
 const ChatBox = () => {
   const { t } = useTranslation();
+  const { socket } = useContext(WebsocketContext);
   const dispatch = useAppDispatch();
-  const { currentChat } = useAppSelector((state) => state.chats);
+  const { currentChat, onlineUsers } = useAppSelector((state) => state.chats);
   const authorization = useAppSelector((state) => state.authorization);
   const { isOpenChatBox } = useAppSelector((state) => state.settings);
   const userId = useMemo(() => {
@@ -56,12 +59,37 @@ const ChatBox = () => {
       });
       if (resp.status === 201) {
         messages?.push(resp.data.data);
+        if (recipientData) {
+          socket.emit('sendMessage', { ...resp.data.data, recipientId: recipientData.id });
+        }
         setText('');
       }
     } catch (error) {
       messageAntd.error('Send message failure!');
     }
-  }, [text, chatId, userId, messages]);
+  }, [text, chatId, userId, messages, socket, recipientData]);
+
+  useEffect(() => {
+    if (socket === null) return;
+    socket.emit('addNewUser', userId);
+    socket.on('getOnlineUsers', (resp: AuthorizationData[]) => dispatch(setOnlineUsers(resp)));
+
+    return () => {
+      socket.off('getOnlineUsers');
+    };
+  }, [socket, userId, dispatch]);
+
+  useEffect(() => {
+    if (socket === null) return;
+    socket.on('getMessage', (resp: IMessage) => {
+      if (resp.chatId !== currentChat?.id) return;
+      messages?.push(resp);
+    });
+
+    return () => {
+      socket.off('getMessage');
+    };
+  }, [socket, userId, dispatch, currentChat, messages]);
 
   return (
     <div className={cx('wrapper', { open: isOpenChatBox })}>
@@ -71,10 +99,14 @@ const ChatBox = () => {
         </div>
         <div className={cx('action')}>
           <p className={cx('name')}>{recipientData ? recipientData.name : false}</p>
-          <span className={cx('status')}>
-            <span className={cx('dot')}></span>
-            <span className={cx('online')}>Online</span>
-          </span>
+          {recipientData && onlineUsers.some((user) => user.userId === recipientData.id) ? (
+            <span className={cx('status')}>
+              <span className={cx('dot')}></span>
+              <span className={cx('online')}>Online</span>
+            </span>
+          ) : (
+            false
+          )}
         </div>
         <CloseOutlined className={cx('close-icon')} onClick={handleOpenChatBox} />
       </header>
