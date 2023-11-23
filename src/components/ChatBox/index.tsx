@@ -42,7 +42,7 @@ const ChatBox = () => {
   const { data: messages } = useMessages(chatId);
   const [text, setText] = useState<string>('');
 
-  const handleOpenChatBox = useCallback(() => {
+  const handleCloseChatBox = useCallback(() => {
     dispatch(openChatBox(false));
     dispatch(setCurrentChat(null));
   }, [dispatch]);
@@ -108,7 +108,7 @@ const ChatBox = () => {
             false
           )}
         </div>
-        <CloseOutlined className={cx('close-icon')} onClick={handleOpenChatBox} />
+        <CloseOutlined className={cx('close-icon')} onClick={handleCloseChatBox} />
       </header>
       <Divider style={{ margin: '0' }} />
       <div className={cx('body')}>
