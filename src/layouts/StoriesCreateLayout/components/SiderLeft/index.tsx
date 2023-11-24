@@ -10,7 +10,8 @@ import { StoriesOption } from '@slices/storiesSlice';
 import { setBgColor, changeText, setStoriesOption, setPreviewStory } from '@slices/storiesSlice';
 import ROUTE_PATH from '@constants/routes';
 import { createStory } from '@apis/story';
-import { uploadImage } from '@helpers/upload';
+import { uploadImage } from '@apis/upload';
+import AvatarDefault from '@assets/images/avatar_default.jpeg';
 
 const cx = classNames.bind(styles);
 
@@ -61,7 +62,6 @@ const SiderLeft = () => {
         const resp = await createStory({ text: currentText, bgColor: currentBgColor });
         if (resp.status === 201) {
           setCreating(false);
-          navigate(ROUTE_PATH.HOME);
           message.success(t('Button.Success'));
           handleCancel();
         }
@@ -72,25 +72,28 @@ const SiderLeft = () => {
     if (currentStoriesOption === StoriesOption.IMAGE) {
       try {
         setCreating(true);
-        const storyResult = await uploadImage(previewStory);
-        const resp = await createStory({ storyUrl: storyResult, type: StoriesOption.IMAGE });
-        if (resp.status === 201) {
-          setCreating(false);
-          navigate(ROUTE_PATH.HOME);
-          message.success(t('Button.Success'));
-          handleCancel();
+        const storyResult = await uploadImage(previewStory, 'stories');
+        if (storyResult.status === 201) {
+          const resp = await createStory({ storyUrl: storyResult.data.data.secure_url, type: StoriesOption.IMAGE });
+          if (resp.status === 201) {
+            message.success(t('Button.Success'));
+          }
+        } else {
+          message.success(t('Button.Failed'));
         }
+        setCreating(false);
+        handleCancel();
       } catch (error) {
         message.success(t('Button.Failed'));
       }
     }
-  }, [currentBgColor, currentText, t, navigate, currentStoriesOption, handleCancel, previewStory]);
+  }, [currentBgColor, currentText, t, currentStoriesOption, handleCancel, previewStory]);
 
   return (
     <div className={cx('wrapper')}>
       <Typography.Title level={5}>{t('Label')}</Typography.Title>
       <div className={cx('head')}>
-        <img src={authorization?.avatar} alt={authorization?.name} />
+        <img src={authorization?.avatar || AvatarDefault} alt={authorization?.name} />
         <Typography.Text className={cx('name')}>{authorization?.name || 'Jakob Botosh'}</Typography.Text>
       </div>
       <Divider style={{ margin: '20px 0' }} />

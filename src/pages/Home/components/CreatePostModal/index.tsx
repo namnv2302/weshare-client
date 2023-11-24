@@ -10,7 +10,7 @@ import { useAppSelector } from 'redux/hooks';
 import styles from './CreatePostModal.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { createPost } from '@apis/post';
-import { uploadImage } from '@helpers/upload';
+import { uploadImage } from '@apis/upload';
 import { useAppDispatch } from 'redux/hooks';
 import { fetchPostList } from '@slices/postSlice';
 
@@ -56,20 +56,21 @@ const CreatePostModal = ({ isOpenModal, setIsOpenModal }: CreatePostModalProps) 
         setTimeout(() => {
           setIsOpenModal(false);
           dispatch(fetchPostList());
-          // dispatch(createPostAction({ status, postUrl: '', user: authorization }));
-          clearField();
           message.success(t('Post.Success'));
           setCreating(false);
+          clearField();
         }, 2000);
       } else {
-        const postUrl = await uploadImage(previewPostUrl);
-        console.log(postUrl);
-        const resp = await createPost({ status, postUrl });
-        if (resp.status === 201) {
-          dispatch(fetchPostList());
-          message.success(t('Post.Success'));
+        const resp = await uploadImage(previewPostUrl, 'posts');
+        if (resp.status === 201 && resp.data) {
+          const newPost = await createPost({ status, postUrl: resp.data.data.secure_url });
+          if (newPost.status === 201) {
+            dispatch(fetchPostList());
+            message.success(t('Post.Success'));
+          } else {
+            message.error(t('Post.Failure'));
+          }
         } else {
-          // dispatch(createPostAction({ status, postUrl, user: authorization }));
           message.error(t('Post.Failure'));
         }
         setIsOpenModal(false);

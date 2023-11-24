@@ -10,7 +10,7 @@ import LeftPanel from '@pages/Profile/components/LeftPanel';
 import RightPanel from '@pages/Profile/components/RightPanel';
 import CoverProfile from '@assets/images/cover-profile.png';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
-import { uploadImage } from '@helpers/upload';
+import { uploadImage } from '@apis/upload';
 import { updateAvatar, updateCoverPhoto } from '@apis/user';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { changeAvatar, changeCoverPhoto } from '@slices/authorizationSlice';
@@ -25,17 +25,21 @@ const ProfilePage = () => {
   const [uploading, setUploading] = useState<boolean>(false);
   const [visibleOption, setVisibleOption] = useState<boolean>(false);
 
-  const handleUploadImage = useCallback(
+  const handleUploadAvatar = useCallback(
     async (file: any) => {
       setUploading(true);
       try {
-        const avatarUrl = await uploadImage(file);
-        if (authorization && avatarUrl) {
-          await updateAvatar(authorization?.id, avatarUrl);
-          dispatch(changeAvatar({ avatar: avatarUrl }));
+        const resp = await uploadImage(file, 'profiles');
+        if (resp.status === 201) {
+          if (authorization) {
+            await updateAvatar(authorization?.id, resp.data.data.secure_url);
+            dispatch(changeAvatar({ avatar: resp.data.data.secure_url }));
+          }
+          message.success(t('Avatar.Success'));
+        } else {
+          message.error(t('Avatar.Failed'));
         }
         setUploading(false);
-        message.success(t('Avatar.Success'));
       } catch (error) {
         setUploading(false);
         message.error(t('Avatar.Failed'));
@@ -48,13 +52,17 @@ const ProfilePage = () => {
     async (file: any) => {
       setUploading(true);
       try {
-        const coverPhotoUrl = await uploadImage(file);
-        if (authorization && coverPhotoUrl) {
-          await updateCoverPhoto(authorization.id, coverPhotoUrl);
-          dispatch(changeCoverPhoto(coverPhotoUrl));
+        const resp = await uploadImage(file, 'profiles');
+        if (resp.status === 201) {
+          if (authorization) {
+            await updateCoverPhoto(authorization.id, resp.data.data.secure_url);
+            dispatch(changeCoverPhoto(resp.data.data.secure_url));
+          }
+          message.success(t('CoverPhoto.Success'));
+        } else {
+          message.error(t('CoverPhoto.Failed'));
         }
         setUploading(false);
-        message.success(t('CoverPhoto.Success'));
       } catch (error) {
         setUploading(false);
         message.error(t('CoverPhoto.Failed'));
@@ -75,7 +83,7 @@ const ProfilePage = () => {
           {t('Avatar.Option1')}
         </Button>
         <ImgCrop rotationSlider>
-          <Upload accept="image/jpg, image/jpeg, image/png" beforeUpload={handleUploadImage}>
+          <Upload accept="image/jpg, image/jpeg, image/png" beforeUpload={handleUploadAvatar}>
             <Button icon={<FileImageOutlined />} className={cx('button')} onClick={() => setVisibleOption(false)}>
               {t('Avatar.Option2')}
             </Button>
