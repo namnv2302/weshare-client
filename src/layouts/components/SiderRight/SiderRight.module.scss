@@ -13,36 +13,5 @@
       font-size: 1.4rem;
       font-weight: 600;
     }
-
-    .icon {
-      color: var(--text-second);
-      cursor: pointer;
-    }
-  }
-
-  .search-input {
-    padding: 4px 11px;
-    margin-top: 12px;
-    border: none;
-    outline: none;
-    font-weight: 500;
-    color: var(--text-primary);
-    background-color: var(--bg-second);
-
-    input {
-      background-color: var(--bg-second);
-      font-size: 1.4rem;
-      font-weight: 500;
-
-      &::placeholder {
-        font-size: 1.4rem;
-        font-weight: 500;
-        color: var(--text-primary);
-      }
-    }
-
-    .icon {
-      color: var(--text-second);
-    }
   }
 }

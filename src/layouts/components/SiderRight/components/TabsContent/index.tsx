@@ -15,7 +15,8 @@ const cx = classNames.bind(styles);
 const TabsContent = () => {
   const { t } = useTranslation();
   const authorization = useAppSelector((state) => state.authorization);
-  const { data: dataFollowed } = useFollowedList();
+  const userId = useMemo(() => (authorization ? authorization.id : ''), [authorization]);
+  const { data: dataFollowed } = useFollowedList(userId);
 
   const items: TabsProps['items'] = useMemo(
     () => [

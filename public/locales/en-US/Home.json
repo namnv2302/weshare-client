@@ -17,7 +17,8 @@
     "Share": "share"
   },
   "RightSider": {
-    "Label": "Messages",
+    "Label1": "Contacts",
+    "Label2": "Suggests",
     "Tab": {
       "Item1": "Primary",
       "Item2": "Requests"

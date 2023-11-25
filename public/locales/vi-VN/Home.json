@@ -17,7 +17,8 @@
     "Share": "chia sẻ"
   },
   "RightSider": {
-    "Label": "Tin nhắn",
+    "Label1": "Liên hệ",
+    "Label2": "Gợi ý",
     "Tab": {
       "Item1": "Bạn bè",
       "Item2": "Yêu cầu"
