@@ -7,10 +7,12 @@ enum UserPath {
   UNFOLLOW = 'users/:id/unfollow',
   ADDFR = 'users/:id/addfr',
   FOLLOWED = 'users/:id/followed',
+  FRIENDS = 'users/:id/friends',
   AVATAR = 'users/:id/avatar',
   COVER = 'users/:id/cover',
   DEFAULT = 'users',
   DETAIL = 'users/:id',
+  SUGGESTS = 'users/suggests',
 }
 
 export const getUserById = async (id: string) => {
@@ -55,4 +57,17 @@ export const updateAvatar = async (id: string, avatar: string) => {
 
 export const updateCoverPhoto = async (id: string, cover: string) => {
   return apiInstance.patch(UserPath.COVER.replace(':id', id), { cover });
+};
+
+export const getFriendList = async (id: string) => {
+  return apiInstance.get(UserPath.FRIENDS.replace(':id', id));
+};
+
+export const getSuggestList = async (current: number = 1, pageSize: number = 10) => {
+  return apiInstance.get(UserPath.SUGGESTS, {
+    params: {
+      current,
+      pageSize,
+    },
+  });
 };

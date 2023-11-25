@@ -3,7 +3,6 @@ import { initReactI18next } from 'react-i18next';
 import I18NextHttpBackend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import I18NextChainedBackend from 'i18next-chained-backend';
-import I18NextLocalStorageBackend from 'i18next-localstorage-backend';
 import { SUPPORTED_LOCALES } from '@constants/locales';
 
 i18n
@@ -16,7 +15,7 @@ i18n
     defaultNS: 'Common',
     fallbackNS: 'Common',
     backend: {
-      backends: [I18NextLocalStorageBackend, I18NextHttpBackend],
+      backends: [I18NextHttpBackend],
       backendOptions: [
         {
           expirationTime: 1 * 24 * 60 * 60 * 1000, // 7 days

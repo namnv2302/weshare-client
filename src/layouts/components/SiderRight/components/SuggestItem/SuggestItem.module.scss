@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 8px 10px;
   border-radius: 10px;
+  cursor: pointer;
 
   &.small {
     .left {
@@ -21,7 +22,6 @@
 
   &:hover {
     background-color: var(--bg-second);
-    cursor: default;
   }
 
   .left {
@@ -32,7 +32,6 @@
       width: 42px;
       height: 42px;
       border-radius: 100%;
-      cursor: pointer;
 
       img {
         display: block;
@@ -45,23 +44,11 @@
 
     .text-info {
       margin-left: 10px;
-      cursor: pointer;
 
       .name {
         font-size: 1.6rem;
-        font-weight: 500;
+        font-weight: 600;
       }
-    }
-  }
-
-  .action {
-    .icon {
-      padding: 8px;
-      font-size: 1.6rem;
-      color: var(--text-second);
-      background-color: var(--bg-second);
-      border-radius: 100%;
-      cursor: pointer;
     }
   }
 }

@@ -23,7 +23,13 @@
       "Item1": "Primary",
       "Item2": "Requests"
     },
-    "Search": "Search"
+    "Search": "Search",
+    "Suggests": {
+      "NoData": "No suggest member"
+    },
+    "Contacts": {
+      "NoData": "No friend"
+    }
   },
   "Failed": "Request failed",
   "Story": {

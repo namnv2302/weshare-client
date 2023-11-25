@@ -23,7 +23,13 @@
       "Item1": "Bạn bè",
       "Item2": "Yêu cầu"
     },
-    "Search": "Tìm kiếm"
+    "Search": "Tìm kiếm",
+    "Suggests": {
+      "NoData": "Không có người dùng gợi ý"
+    },
+    "Contacts": {
+      "NoData": "Không có bạn bè"
+    }
   },
   "Failed": "Yêu cầu chưa được gửi",
   "Story": {
