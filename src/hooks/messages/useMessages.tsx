@@ -26,7 +26,7 @@ const useMessages = (chatId: string) => {
     getMessagesList();
   }, [getMessagesList]);
 
-  return { data, loading };
+  return { data, loading, setData };
 };
 
 export default useMessages;

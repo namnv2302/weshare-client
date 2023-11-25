@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState, useContext, useEffect } from 'react';
+import { useMemo, useCallback, useState, useContext, useEffect, useRef, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CloseOutlined, SendOutlined } from '@ant-design/icons';
 import moment from 'moment';
@@ -39,8 +39,9 @@ const ChatBox = () => {
     return 'string';
   }, [currentChat]);
   const { data: recipientData } = useRecipient(chat, userId);
-  const { data: messages } = useMessages(chatId);
+  const { data: messages, setData: setMessages } = useMessages(chatId);
   const [text, setText] = useState<string>('');
+  const chatBoxRef = useRef<any>();
 
   const handleCloseChatBox = useCallback(() => {
     dispatch(openChatBox(false));
@@ -58,7 +59,9 @@ const ChatBox = () => {
         text: text.trim(),
       });
       if (resp.status === 201) {
-        messages?.push(resp.data.data);
+        if (messages) {
+          setMessages((prev) => [...messages, resp.data.data]);
+        }
         if (recipientData) {
           socket.emit('sendMessage', { ...resp.data.data, recipientId: recipientData.id });
         }
@@ -67,7 +70,7 @@ const ChatBox = () => {
     } catch (error) {
       messageAntd.error('Send message failure!');
     }
-  }, [text, chatId, userId, messages, socket, recipientData]);
+  }, [text, chatId, userId, messages, socket, recipientData, setMessages]);
 
   useEffect(() => {
     if (socket === null) return;
@@ -83,13 +86,22 @@ const ChatBox = () => {
     if (socket === null) return;
     socket.on('getMessage', (resp: IMessage) => {
       if (resp.chatId !== currentChat?.id) return;
-      messages?.push(resp);
+      console.log(resp);
+      if (messages) {
+        setMessages((prev) => [...messages, resp]);
+      }
     });
 
     return () => {
       socket.off('getMessage');
     };
-  }, [socket, userId, dispatch, currentChat, messages]);
+  }, [socket, userId, dispatch, currentChat, messages, setMessages]);
+
+  useEffect(() => {
+    if (chatBoxRef && chatBoxRef.current) {
+      chatBoxRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [messages]);
 
   return (
     <div className={cx('wrapper', { open: isOpenChatBox })}>
@@ -116,6 +128,7 @@ const ChatBox = () => {
           messages?.map((message) => (
             <div
               key={uuIdV4()}
+              ref={chatBoxRef}
               className={cx('', {
                 'message-fri': message.senderId !== userId,
                 message: message.senderId === userId,
@@ -149,4 +162,4 @@ const ChatBox = () => {
   );
 };
 
-export default ChatBox;
+export default memo(ChatBox);

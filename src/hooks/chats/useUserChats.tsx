@@ -17,8 +17,8 @@ const useUserChats = (id: string) => {
     const resp = await getUserChats(id);
     if (resp.data.data) {
       setData(resp.data.data);
-      setLoading(false);
     }
+    setLoading(false);
   }, [id]);
 
   useEffect(() => {

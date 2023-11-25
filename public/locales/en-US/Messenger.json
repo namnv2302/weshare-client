@@ -5,5 +5,6 @@
     "Item2": "Requests"
   },
   "Search": "Search",
-  "NoMessages": "No messages in conversation"
+  "NoMessages": "No messages in conversation",
+  "NoConversation": "No messages found."
 }
