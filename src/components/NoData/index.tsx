@@ -6,7 +6,7 @@ const NoData = ({ title }: { title: string }) => {
     <Result
       style={{ padding: '16px' }}
       title={<Typography.Text className="text-default">{title}</Typography.Text>}
-      icon={<img src={NoDataImage} alt="No data" style={{ width: '100px', borderRadius: '10px' }} />}
+      icon={<img src={NoDataImage} alt="No data" style={{ width: '80px', borderRadius: '10px' }} />}
     />
   );
 };

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { CommentOutlined, MoreOutlined } from '@ant-design/icons';
@@ -129,4 +129,4 @@ const PostItem = ({ data }: { data: IPost }) => {
   );
 };
 
-export default PostItem;
+export default memo(PostItem);

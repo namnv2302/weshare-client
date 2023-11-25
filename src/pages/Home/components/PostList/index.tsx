@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Divider, Spin } from 'antd';
 import { v4 as uuIdV4 } from 'uuid';
 import classNames from 'classnames/bind';
@@ -38,4 +39,4 @@ const PostList = ({ posts, loading, divider = true }: { posts: IPost[]; loading:
   );
 };
 
-export default PostList;
+export default memo(PostList);

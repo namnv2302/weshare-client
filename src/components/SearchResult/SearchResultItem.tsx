@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from 'antd';
 import classNames from 'classnames/bind';
@@ -31,4 +32,4 @@ const SearchResultItem = ({ user }: { user: AuthorizationData }) => {
   );
 };
 
-export default SearchResultItem;
+export default memo(SearchResultItem);

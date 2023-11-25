@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -33,4 +34,4 @@ const StoryItem = ({ data }: { data: IStory }) => {
   );
 };
 
-export default StoryItem;
+export default memo(StoryItem);

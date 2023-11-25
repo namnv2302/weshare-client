@@ -1,8 +1,8 @@
 .wrapper {
   position: relative;
-  min-height: 84px;
+  min-height: 68px;
   margin-top: -9px;
-  padding: 16px 0;
+  padding: 10px 0;
   border-radius: 10px;
   background-color: var(--bg-primary);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 6px 10px;
   border-radius: 10px;
   cursor: pointer;
 

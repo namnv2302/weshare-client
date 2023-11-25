@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Typography, message } from 'antd';
 import classNames from 'classnames/bind';
@@ -125,4 +125,4 @@ const ViewUsersItem = ({ data, size }: { data: AuthorizationData; size?: string 
   );
 };
 
-export default ViewUsersItem;
+export default memo(ViewUsersItem);

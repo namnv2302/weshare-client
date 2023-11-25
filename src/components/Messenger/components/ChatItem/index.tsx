@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, memo } from 'react';
 import { Spin, Typography } from 'antd';
 import { IChat } from '@hooks/chats/useUserChats';
 import useRecipient from '@hooks/chats/useRecipient';
@@ -51,4 +51,4 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
   );
 };
 
-export default ChatItem;
+export default memo(ChatItem);

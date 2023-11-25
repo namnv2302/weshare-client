@@ -98,7 +98,10 @@ html *::-webkit-scrollbar-track {
 }
 
 .ws-result-icon {
-  margin-bottom: 16px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0 !important;
 }
 
 .ws-select-selector {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ReadMoreStatus.module.scss';
 
@@ -28,4 +28,4 @@ const ReadMoreStatus = ({ status, mb }: { status: string; mb?: boolean }) => {
   );
 };
 
-export default ReadMoreStatus;
+export default memo(ReadMoreStatus);

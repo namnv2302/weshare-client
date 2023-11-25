@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -30,4 +31,4 @@ const SearchResult = ({ data, loading }: { data: AuthorizationData[]; loading: b
   );
 };
 
-export default SearchResult;
+export default memo(SearchResult);
