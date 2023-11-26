@@ -8,6 +8,7 @@ import styles from './ChatItem.module.scss';
 import AvatarDefault from '@assets/images/avatar_default.jpeg';
 import { setCurrentChat } from '@slices/chatsSlice';
 import { openMessenger, openChatBox } from '@slices/settingsSlice';
+import useMessages from '@hooks/messages/useMessages';
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +21,13 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
     return '';
   }, [authorization]);
   const { data, loading } = useRecipient(chat, userId);
+  const chatId = useMemo(() => {
+    if (chat) {
+      return `${chat.id}`;
+    }
+    return '';
+  }, [chat]);
+  const { data: messages } = useMessages(chatId);
 
   const handleOpenChat = useCallback(() => {
     dispatch(setCurrentChat(chat));
@@ -40,7 +48,16 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
             </div>
             <div className={cx('text-info')}>
               <Typography.Text className={cx('name')}>{data.name || 'Jakob botosh'}</Typography.Text>
-              <Typography.Text className={cx('message')}>Hôm nay bạn khỏe không!!</Typography.Text>
+              {messages && messages.length > 0 ? (
+                <Typography.Text className={cx('message')}>
+                  {messages[messages?.length - 1].senderId === userId
+                    ? 'You'
+                    : `${data.name.split(' ')[data.name.split(' ').length - 1]}`}{' '}
+                  : {messages[messages.length - 1].text}
+                </Typography.Text>
+              ) : (
+                false
+              )}
             </div>
           </div>
         </div>

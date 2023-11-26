@@ -6,6 +6,7 @@ export interface IChat {
   firstId?: string;
   secondId?: string;
   createdAt?: Date;
+  sendLastAt?: Date;
 }
 
 const useUserChats = (id: string) => {
