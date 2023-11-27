@@ -5,6 +5,7 @@ enum MessagePath {
   DEFAULT = '/messages/:chatId',
   CREATE = '/messages',
   UPDATE = '/messages/:id',
+  UNREAD = '/messages/unread',
 }
 
 export const getMessages = async (chatId: string) => {
@@ -19,4 +20,8 @@ export const updateMessage = async (id: string, payload: IMessage) => {
   return await apiInstance.patch(MessagePath.UPDATE.replace(':id', id), {
     ...payload,
   });
+};
+
+export const getMessagesUnread = async () => {
+  return await apiInstance.get(MessagePath.UNREAD);
 };

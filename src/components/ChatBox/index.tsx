@@ -94,7 +94,14 @@ const ChatBox = () => {
     socket.on('getNotificationNewMessage', (resp: IMessage) => {
       const isChatOpen = currentChat?.firstId === resp.senderId || currentChat?.secondId === resp.senderId;
       if (isChatOpen) {
-        return;
+        dispatch(
+          updateNotificationNewMessage({
+            senderId: resp.senderId,
+            text: resp.text,
+            isRead: resp.isRead,
+            createdAt: resp.createdAt,
+          }),
+        );
       } else {
         if (resp && resp.id) {
           const response = updateMessage(resp.id, { ...resp, isRead: false });

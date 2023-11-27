@@ -16,6 +16,7 @@ import ROUTE_PATH from '@constants/routes';
 import { clearLocalstorageToken } from '@utils/localstorage';
 import Messenger from '@components/Messenger';
 import { openMessenger } from '@slices/settingsSlice';
+import useMessagesUnread from '@hooks/messages/useMessagesUnread';
 
 const cx = classNames.bind(styles);
 
@@ -26,6 +27,17 @@ const RightPanel = () => {
   const { isOpenMessenger } = useAppSelector((state) => state.settings);
   const authorization = useAppSelector((state) => state.authorization);
   const { notificationNewMessage } = useAppSelector((state) => state.chats);
+  const { data } = useMessagesUnread();
+
+  const countNewMessageUnread = useMemo(() => {
+    if (authorization) {
+      if (notificationNewMessage && notificationNewMessage.length > 0) {
+        return notificationNewMessage.filter((noti) => noti.isRead === false && noti.senderId !== authorization.id)
+          .length;
+      }
+      return data?.filter((mess) => mess.senderId !== authorization.id)?.length;
+    }
+  }, [data, notificationNewMessage, authorization]);
 
   const languagesOption = useMemo(() => {
     return SUPPORTED_LOCALES.map(({ value, label }) => ({
@@ -109,7 +121,7 @@ const RightPanel = () => {
         <Tippy visible={isOpenMessenger} interactive delay={[0, 500]} placement="bottom" render={renderResult}>
           <Badge
             style={{ width: '16px', height: '19px' }}
-            count={notificationNewMessage.length}
+            count={countNewMessageUnread}
             overflowCount={20}
             color="#1b79e5"
             offset={[0, 3]}

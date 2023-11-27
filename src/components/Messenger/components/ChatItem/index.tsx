@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.authorization);
-  const { onlineUsers } = useAppSelector((state) => state.chats);
+  const { onlineUsers, notificationNewMessage } = useAppSelector((state) => state.chats);
   const userId = useMemo(() => {
     if (authorization) return authorization.id;
     return '';
@@ -28,12 +28,16 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
     return '';
   }, [chat]);
   const { data: messages } = useMessages(chatId);
-  const isRead = useMemo(() => {
-    if (messages && messages[messages.length - 1]) {
-      return !messages[messages.length - 1].isRead;
+
+  const lastMessage = useMemo(() => {
+    if (notificationNewMessage && notificationNewMessage.length > 0 && data) {
+      const lastMessOfChat = notificationNewMessage.filter((message) => message.senderId === data.id);
+      return lastMessOfChat[0];
     }
-    return false;
-  }, [messages]);
+    if (messages && messages.length > 0) {
+      return messages[messages.length - 1];
+    }
+  }, [data, messages, notificationNewMessage]);
 
   const handleOpenChat = useCallback(() => {
     dispatch(setCurrentChat(chat));
@@ -49,7 +53,7 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
         <div
           className={cx('item', {
             small: size === 'small',
-            unread: isRead,
+            unread: lastMessage?.isRead === false && lastMessage.senderId !== userId,
           })}
           onClick={handleOpenChat}
         >
@@ -60,19 +64,19 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
             </div>
             <div className={cx('text-info')}>
               <Typography.Text className={cx('name')}>{data.name || 'Jakob botosh'}</Typography.Text>
-              {messages && messages.length > 0 ? (
+              {lastMessage ? (
                 <Typography.Text className={cx('message')}>
-                  {messages[messages?.length - 1].senderId === userId
+                  {lastMessage?.senderId === userId
                     ? 'You'
                     : `${data.name.split(' ')[data.name.split(' ').length - 1]}`}{' '}
-                  : {messages[messages.length - 1].text}
+                  : {lastMessage?.text}
                 </Typography.Text>
               ) : (
                 false
               )}
             </div>
           </div>
-          {isRead && <div className={cx('unread')}></div>}
+          {lastMessage?.isRead === false && lastMessage.senderId !== userId && <div className={cx('unread')}></div>}
         </div>
       ) : (
         false
