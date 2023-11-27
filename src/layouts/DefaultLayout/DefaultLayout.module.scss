@@ -46,5 +46,12 @@
     z-index: 9;
     min-width: var(--sider-right-width) !important;
     max-width: var(--sider-right-width) !important;
+    height: calc(100vh - var(--header-height) - 22px);
+    border-radius: 10px;
+    overflow-y: overlay;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

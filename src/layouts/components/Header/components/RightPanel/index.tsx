@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { Divider, Dropdown, Popconfirm, Space, Typography, message } from 'antd';
+import { Divider, Dropdown, Popconfirm, Space, Typography, message, Badge } from 'antd';
 import { BellOutlined, MessageOutlined } from '@ant-design/icons';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -25,6 +25,7 @@ const RightPanel = () => {
   const navigate = useNavigate();
   const { isOpenMessenger } = useAppSelector((state) => state.settings);
   const authorization = useAppSelector((state) => state.authorization);
+  const { notificationNewMessage } = useAppSelector((state) => state.chats);
 
   const languagesOption = useMemo(() => {
     return SUPPORTED_LOCALES.map(({ value, label }) => ({
@@ -106,7 +107,15 @@ const RightPanel = () => {
     <div className={cx('wrapper')}>
       <Space>
         <Tippy visible={isOpenMessenger} interactive delay={[0, 500]} placement="bottom" render={renderResult}>
-          <MessageOutlined className={cx('icon')} onClick={() => dispatch(openMessenger(!isOpenMessenger))} />
+          <Badge
+            style={{ width: '16px', height: '19px' }}
+            count={notificationNewMessage.length}
+            overflowCount={20}
+            color="#1b79e5"
+            offset={[0, 3]}
+          >
+            <MessageOutlined className={cx('icon')} onClick={() => dispatch(openMessenger(!isOpenMessenger))} />
+          </Badge>
         </Tippy>
       </Space>
       <Space>

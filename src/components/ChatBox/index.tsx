@@ -11,9 +11,9 @@ import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import useRecipient from '@hooks/chats/useRecipient';
 import useMessages, { IMessage } from '@hooks/messages/useMessages';
 import { openChatBox } from '@slices/settingsSlice';
-import { setCurrentChat, setOnlineUsers } from '@slices/chatsSlice';
+import { setCurrentChat, setOnlineUsers, updateNotificationNewMessage } from '@slices/chatsSlice';
 import EmptyBoxImage from '@assets/images/empty-box.png';
-import { createMessage } from '@apis/message';
+import { createMessage, updateMessage } from '@apis/message';
 import { WebsocketContext } from 'context/WebsocketProvider';
 import { AuthorizationData } from '@slices/authorizationSlice';
 
@@ -86,14 +86,39 @@ const ChatBox = () => {
     if (socket === null) return;
     socket.on('getMessage', (resp: IMessage) => {
       if (resp.chatId !== currentChat?.id) return;
-      console.log(resp);
       if (messages) {
         setMessages((prev) => [...messages, resp]);
       }
     });
 
+    socket.on('getNotificationNewMessage', (resp: IMessage) => {
+      const isChatOpen = currentChat?.firstId === resp.senderId || currentChat?.secondId === resp.senderId;
+      if (isChatOpen) {
+        return;
+      } else {
+        if (resp && resp.id) {
+          const response = updateMessage(resp.id, { ...resp, isRead: false });
+          response
+            .then((res) => res)
+            .then((data) => {
+              if (data.data.data) {
+                dispatch(
+                  updateNotificationNewMessage({
+                    senderId: data.data.data.senderId,
+                    text: data.data.data.text,
+                    isRead: data.data.data.isRead,
+                    createdAt: data.data.data.createdAt,
+                  }),
+                );
+              }
+            });
+        }
+      }
+    });
+
     return () => {
       socket.off('getMessage');
+      socket.off('getNotificationNewMessage');
     };
   }, [socket, userId, dispatch, currentChat, messages, setMessages]);
 

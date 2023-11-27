@@ -28,6 +28,12 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
     return '';
   }, [chat]);
   const { data: messages } = useMessages(chatId);
+  const isRead = useMemo(() => {
+    if (messages && messages[messages.length - 1]) {
+      return !messages[messages.length - 1].isRead;
+    }
+    return false;
+  }, [messages]);
 
   const handleOpenChat = useCallback(() => {
     dispatch(setCurrentChat(chat));
@@ -40,7 +46,13 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
       {loading ? (
         <Spin />
       ) : data ? (
-        <div className={cx('item', { small: size === 'small' })} onClick={handleOpenChat}>
+        <div
+          className={cx('item', {
+            small: size === 'small',
+            unread: isRead,
+          })}
+          onClick={handleOpenChat}
+        >
           <div className={cx('left')}>
             <div className={cx('avatar')}>
               <img src={data.avatar || AvatarDefault} alt="Avatar" />
@@ -60,6 +72,7 @@ const ChatItem = ({ chat, size }: { chat: IChat; size?: string }) => {
               )}
             </div>
           </div>
+          {isRead && <div className={cx('unread')}></div>}
         </div>
       ) : (
         false

@@ -3,12 +3,12 @@
   align-items: center;
 
   .icon {
-    padding: 8px;
+    padding: 10px;
     font-size: 20px;
     color: var(--text-primary);
     border-radius: 10px;
     background-color: var(--bg-second);
-    margin-left: 14px;
+    margin-left: 20px;
     cursor: pointer;
   }
 
@@ -16,7 +16,7 @@
     display: inline-flex;
     align-items: center;
     height: 100%;
-    margin-left: 14px;
+    margin-left: 20px;
     cursor: pointer;
 
     .name {
