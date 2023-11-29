@@ -1,6 +1,6 @@
 import { Fragment, Suspense, useEffect } from 'react';
 import { ConfigProvider } from 'antd';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidV4 } from 'uuid';
 import { publicRoutes } from '@constants/routers';
 import DefaultLayout from '@layouts/DefaultLayout';
@@ -8,17 +8,18 @@ import { getAccessToken } from '@utils/localstorage';
 import { whoAmI } from '@apis/auth';
 import { useAppDispatch } from 'redux/hooks';
 import { logout, login } from '@slices/authorizationSlice';
-import ROUTE_PATH from '@constants/routes';
 import ProtectRoute from 'templates/ProtectRoute';
+import ROUTE_PATH from '@constants/routes';
 
 function App() {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     (async () => {
-      if (getAccessToken() == null) {
-        navigate(ROUTE_PATH.SIGN_IN);
+      if (getAccessToken() == null && pathname !== '/register') {
+        return navigate(ROUTE_PATH.SIGN_IN);
       }
       const resAuth = await whoAmI();
       if (resAuth.status === 200 && resAuth.data) {
@@ -27,7 +28,7 @@ function App() {
         dispatch(logout());
       }
     })();
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, pathname]);
 
   return (
     <ConfigProvider

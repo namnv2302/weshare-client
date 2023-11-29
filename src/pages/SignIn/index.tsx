@@ -99,7 +99,7 @@ const SignInPage = () => {
                 <Button loading={loading} type="primary" htmlType="submit" className={cx('login')}>
                   Login
                 </Button>
-                <Button type="primary" ghost className={cx('create')}>
+                <Button type="primary" ghost className={cx('create')} onClick={() => navigate(ROUTE_PATH.REGISTER)}>
                   Create account
                 </Button>
               </Form.Item>

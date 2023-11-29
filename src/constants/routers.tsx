@@ -8,6 +8,7 @@ import StoriesLayout from '@layouts/StoriesLayout';
 
 // pages
 import SignInPage from '@pages/SignIn';
+import RegisterPage from '@pages/Register';
 import HomePage from '@pages/Home';
 import ProfilePage from '@pages/Profile';
 import UserPage from '@pages/User';
@@ -35,6 +36,11 @@ export const publicRoutes: publicRoutesType[] = [
   {
     path: ROUTE_PATH.SIGN_IN,
     component: SignInPage,
+    layout: null,
+  },
+  {
+    path: ROUTE_PATH.REGISTER,
+    component: RegisterPage,
     layout: null,
   },
   {

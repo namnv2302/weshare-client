@@ -59,7 +59,7 @@
         -webkit-appearance: none;
         appearance: none;
         padding: 6px 12px;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 500;
         background-color: #f3f3f5;
         border: 1px solid #bcc0c4;
@@ -73,7 +73,7 @@
         }
 
         input {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           font-weight: 500;
           background-color: #f3f3f5 !important;
 
@@ -85,7 +85,7 @@
         }
       }
 
-      .login {
+      .register {
         width: 49%;
         height: 34px;
         font-size: 1.4rem;
@@ -94,7 +94,7 @@
         background-color: var(--primary-color);
       }
 
-      .create {
+      .login {
         width: 49%;
         height: 34px;
         font-size: 1.4rem;
@@ -103,17 +103,6 @@
         border-radius: 8px;
         border: 1px solid var(--primary-color);
         margin-left: 12px;
-      }
-    }
-
-    .forgot-pw {
-      text-align: center;
-      margin-top: 40px;
-
-      a {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: var(--primary-color);
       }
     }
 

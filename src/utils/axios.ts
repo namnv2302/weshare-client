@@ -86,28 +86,28 @@ class CustomAxiosInstance {
       },
     );
 
-    this.instance.interceptors.response.use(
-      (response) => {
-        return response;
-      },
-      async (error) => {
-        const originalRequest = error.config;
-        if (originalRequest.url === '/auth/login') return Promise.reject(error);
-        if (error.response.status === 400 && !originalRequest._retry) {
-          console.log('[Auth] Access token expired! Reauthorizing with refresh token.');
-          originalRequest._retry = true;
-          const result = await reauthorize();
-          if (result) {
-            console.log('[Auth] Reauthorization success. Retrying last request');
-            saveAccessToken(result?.data?.access_token);
-            this.instance.defaults.headers.common.authorization = `Bearer ${result?.data?.access_token}`;
-            return this.instance(originalRequest);
-          }
-          clearLocalstorageToken();
-        }
-        return Promise.reject(error);
-      },
-    );
+    // this.instance.interceptors.response.use(
+    //   (response) => {
+    //     return response;
+    //   },
+    //   async (error) => {
+    //     const originalRequest = error.config;
+    //     if (originalRequest.url === '/auth/login') return Promise.reject(error);
+    //     if (error.response.status === 400 && !originalRequest._retry) {
+    //       console.log('[Auth] Access token expired! Reauthorizing with refresh token.');
+    //       originalRequest._retry = true;
+    //       const result = await reauthorize();
+    //       if (result) {
+    //         console.log('[Auth] Reauthorization success. Retrying last request');
+    //         saveAccessToken(result?.data?.access_token);
+    //         this.instance.defaults.headers.common.authorization = `Bearer ${result?.data?.access_token}`;
+    //         return this.instance(originalRequest);
+    //       }
+    //       clearLocalstorageToken();
+    //     }
+    //     return Promise.reject(error);
+    //   },
+    // );
   }
 
   get(path: string, configs?: AxiosRequestConfig): Promise<AxiosResponse> {
