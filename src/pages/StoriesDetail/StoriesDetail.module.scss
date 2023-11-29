@@ -3,6 +3,7 @@
   padding: 0 22px 22px 44px;
 
   .content {
+    position: relative;
     width: 340px;
     margin: 0 auto;
   }
@@ -20,6 +21,7 @@
   justify-content: center;
   padding: 16px 20px;
   border-radius: var(--border-radius-default);
+  transition: all 1s ease;
 
   .text {
     font-size: 1.4rem;

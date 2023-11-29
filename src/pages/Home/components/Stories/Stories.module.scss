@@ -4,6 +4,32 @@
   background-color: var(--bg-primary);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   width: 100%;
+
+  .no-stories {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: var(--bg-second);
+      cursor: pointer;
+    }
+
+    .plus-icon {
+      font-size: 2rem;
+      color: #1e74fd;
+      padding: 10px;
+      border-radius: 100%;
+      margin-right: 10px;
+      background-color: var(--bg-second);
+    }
+
+    .text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+  }
 }
 
 .story-item {

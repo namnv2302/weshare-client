@@ -21,6 +21,7 @@ type StoriesState = {
   currentBgColor: string;
   currentText: string;
   previewStory: any;
+  currentStoryShow: null | IStory;
 };
 
 const initialState: StoriesState = {
@@ -28,6 +29,7 @@ const initialState: StoriesState = {
   currentBgColor: '#1b79e5',
   currentText: '',
   previewStory: null,
+  currentStoryShow: null,
 };
 
 export const storiesSlice = createSlice({
@@ -46,8 +48,11 @@ export const storiesSlice = createSlice({
     setPreviewStory: (state, action) => {
       state.previewStory = action.payload;
     },
+    setCurrentStoryShow: (state, action) => {
+      state.currentStoryShow = action.payload;
+    },
   },
 });
 
-export const { setStoriesOption, setBgColor, changeText, setPreviewStory } = storiesSlice.actions;
+export const { setStoriesOption, setBgColor, changeText, setPreviewStory, setCurrentStoryShow } = storiesSlice.actions;
 export default storiesSlice.reducer;
