@@ -56,6 +56,7 @@ const ChatBox = () => {
       const resp = await createMessage({
         chatId: chatId,
         senderId: userId,
+        recipientId: recipientData?.id,
         text: text.trim(),
       });
       if (resp.status === 201) {
@@ -63,7 +64,7 @@ const ChatBox = () => {
           setMessages((prev) => [...messages, resp.data.data]);
         }
         if (recipientData) {
-          socket.emit('sendMessage', { ...resp.data.data, recipientId: recipientData.id });
+          socket.emit('sendMessage', { ...resp.data.data });
         }
         setText('');
       }
@@ -97,6 +98,7 @@ const ChatBox = () => {
         dispatch(
           updateNotificationNewMessage({
             senderId: resp.senderId,
+            recipientId: resp.recipientId,
             text: resp.text,
             isRead: resp.isRead,
             createdAt: resp.createdAt,
@@ -112,6 +114,7 @@ const ChatBox = () => {
                 dispatch(
                   updateNotificationNewMessage({
                     senderId: data.data.data.senderId,
+                    recipientId: data.data.data.recipientId,
                     text: data.data.data.text,
                     isRead: data.data.data.isRead,
                     createdAt: data.data.data.createdAt,

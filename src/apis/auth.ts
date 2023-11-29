@@ -6,6 +6,7 @@ enum AuthPath {
   ME = '/auth/me',
   LOGOUT = '/auth/logout',
   LOGIN_SUCCESS = '/auth/login/success',
+  VERIFY_EMAIL = '/auth/verify-email',
 }
 
 export const login = async (username: string, password: string) => {
@@ -26,4 +27,8 @@ export const whoAmI = async () => {
 
 export const logout = async () => {
   return apiInstance.get(AuthPath.LOGOUT);
+};
+
+export const verifyEmail = async (token: string) => {
+  return apiInstance.get(AuthPath.VERIFY_EMAIL, { params: { token } });
 };

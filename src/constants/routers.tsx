@@ -17,6 +17,7 @@ import StoriesCreatePage from '@pages/StoriesCreate';
 import StoriesDetailPage from '@pages/StoriesDetail';
 import NotFoundPage from '@pages/NotFound';
 import SignInSuccessPage from '@pages/SignInSuccess';
+import VerifyEmailPage from '@pages/VerifyEmail';
 
 type publicRoutesType = {
   path: string;
@@ -75,6 +76,11 @@ export const publicRoutes: publicRoutesType[] = [
   {
     path: ROUTE_PATH.LOGIN_SUCCESS,
     component: SignInSuccessPage,
+  },
+  {
+    path: ROUTE_PATH.VERIFY_EMAIL,
+    component: VerifyEmailPage,
+    layout: null,
   },
   {
     path: ROUTE_PATH.NOT_FOUND,

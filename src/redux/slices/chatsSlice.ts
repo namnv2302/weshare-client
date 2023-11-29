@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 type ChatsState = {
   currentChat: IChat | null;
   onlineUsers: { userId: string; socketId: string }[];
-  notificationNewMessage: { senderId: string; text: string; isRead: boolean; createdAt: Date }[];
+  notificationNewMessage: { senderId: string; recipientId: string; text: string; isRead: boolean; createdAt: Date }[];
 };
 
 const initialState: ChatsState = {

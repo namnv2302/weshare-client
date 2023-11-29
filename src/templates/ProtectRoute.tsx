@@ -6,7 +6,7 @@ const ProtectRoute = ({ children }: { children: JSX.Element }) => {
   const { pathname } = useLocation();
   const authorization = useAppSelector((state) => state.authorization);
 
-  if (!authorization && pathname !== '/register') {
+  if (!authorization && pathname !== '/register' && pathname !== '/verify-email') {
     <NavigateToSignIn />;
   }
 

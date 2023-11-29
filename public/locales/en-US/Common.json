@@ -41,5 +41,15 @@
   },
   "Empty": "Empty",
   "NotYet": "Evolving functionality",
-  "Friend": "Friend"
+  "Friend": "Friend",
+  "VerifyEmail": {
+    "Title": "Verifying email",
+    "Success": {
+      "Message": "Verify email successfully",
+      "BackToLogin": "Back to login page"
+    },
+    "Failed": {
+      "Message": "Verify failed, {{extra}}"
+    }
+  }
 }

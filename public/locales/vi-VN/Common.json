@@ -41,5 +41,15 @@
   },
   "Empty": "Chưa có",
   "NotYet": "Chức năng đang phát triển",
-  "Friend": "Bạn bè"
+  "Friend": "Bạn bè",
+  "VerifyEmail": {
+    "Title": "Xác minh email của bạn",
+    "Success": {
+      "Message": "Xác minh email thành công",
+      "BackToLogin": "Đăng nhập lại"
+    },
+    "Failed": {
+      "Message": "Xác minh thất bại, {{extra}}"
+    }
+  }
 }

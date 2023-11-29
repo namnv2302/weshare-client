@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      if (getAccessToken() == null && pathname !== '/register') {
+      if (getAccessToken() == null && pathname !== '/register' && pathname !== '/verify-email') {
         return navigate(ROUTE_PATH.SIGN_IN);
       }
       const resAuth = await whoAmI();

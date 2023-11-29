@@ -8,6 +8,7 @@ const ROUTE_PATH = {
   SIGN_IN: '/sign-in',
   REGISTER: '/register',
   LOGIN_SUCCESS: '/sign-in/success',
+  VERIFY_EMAIL: '/verify-email',
   NOT_FOUND: '404',
   OTHER: '*',
 };

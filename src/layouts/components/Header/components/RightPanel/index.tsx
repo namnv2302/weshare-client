@@ -32,10 +32,13 @@ const RightPanel = () => {
   const countNewMessageUnread = useMemo(() => {
     if (authorization) {
       if (notificationNewMessage && notificationNewMessage.length > 0) {
-        return notificationNewMessage.filter((noti) => noti.isRead === false && noti.senderId !== authorization.id)
-          .length;
+        return notificationNewMessage.filter(
+          (noti) =>
+            noti.isRead === false && noti.senderId !== authorization.id && noti.recipientId === authorization.id,
+        ).length;
       }
-      return data?.filter((mess) => mess.senderId !== authorization.id)?.length;
+      return data?.filter((mess) => mess.senderId !== authorization.id && mess.recipientId === authorization.id)
+        ?.length;
     }
   }, [data, notificationNewMessage, authorization]);
 

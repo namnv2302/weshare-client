@@ -1,0 +1,31 @@
+.wrapper {
+  min-height: 100vh;
+  text-align: center;
+
+  .title {
+    font-size: 2rem;
+    margin-top: 6%;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icon {
+      font-size: 4rem;
+    }
+
+    .text-success,
+    .text-error {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 18px;
+    }
+
+    .back-login {
+      margin-top: 12px;
+    }
+  }
+}

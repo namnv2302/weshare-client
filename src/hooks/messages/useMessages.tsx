@@ -5,6 +5,7 @@ export interface IMessage {
   id?: string;
   chatId?: string;
   senderId?: string;
+  recipientId?: string;
   text?: string;
   isRead?: boolean;
   createdAt?: string;
